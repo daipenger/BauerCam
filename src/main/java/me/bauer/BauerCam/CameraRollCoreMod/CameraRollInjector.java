@@ -54,7 +54,7 @@ public final class CameraRollInjector implements IClassTransformer {
 }
 
 /**
- * TODO: needs to be done for 1.9
+ * Random fact: 1.9 did not break the signature at all! :)
  */
 
 /**

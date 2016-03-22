@@ -1,7 +1,6 @@
 package me.bauer.BauerCam;
 
 import me.bauer.BauerCam.Path.PathHandler;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
@@ -39,12 +38,13 @@ public final class EventListener {
 	}
 
 	/**
-	 * Currently activated for 1.9 (but might break again with optifine, this is
-	 * pre optifine with forge support)
+	 * Disabled and replaced by coremod again (TODO: When optifine is compatible
+	 * with forge, this method might work now)
 	 */
-	@SubscribeEvent
-	public void onOrientCamera(EntityViewRenderEvent.CameraSetup e) {
-		e.roll = CameraRoll.roll;
-	}
+	/*
+	 * @SubscribeEvent public void
+	 * onOrientCamera(EntityViewRenderEvent.CameraSetup e) { // e.roll =
+	 * CameraRoll.roll; }
+	 */
 
 }

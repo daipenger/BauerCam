@@ -54,6 +54,10 @@ public final class CameraRollInjector implements IClassTransformer {
 }
 
 /**
+ * TODO: needs to be done for 1.9
+ */
+
+/**
  * Code snippet to do research upon the obfuscated method layer
  */
 /**

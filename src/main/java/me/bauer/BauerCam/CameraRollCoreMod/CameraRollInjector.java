@@ -54,6 +54,10 @@ public final class CameraRollInjector implements IClassTransformer {
 }
 
 /**
+ * Random fact: 1.9 did not break the signature at all! :)
+ */
+
+/**
  * Code snippet to do research upon the obfuscated method layer
  */
 /**

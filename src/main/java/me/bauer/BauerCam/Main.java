@@ -16,7 +16,7 @@ public final class Main {
 
 	public static final String modId = "BauerCam";
 	public static final String version = "1.0";
-	public static final String minecraftTargetVersion = "1.8.9";
+	public static final String minecraftTargetVersion = "1.9";
 
 	public final static KeyBinding point = new KeyBinding("Add path point", Keyboard.KEY_P, modId);
 	public final static KeyBinding cameraClock = new KeyBinding("Roll clockwise", Keyboard.KEY_L, modId);

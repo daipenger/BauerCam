@@ -5,7 +5,7 @@ import me.bauer.BauerCam.Path.Position;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.text.TextComponentString;
 
 public final class Utils {
 
@@ -66,7 +66,7 @@ public final class Utils {
 		if (player == null) {
 			return;
 		}
-		player.addChatMessage(new ChatComponentText(msg));
+		player.addChatMessage(new TextComponentString(msg));
 	}
 
 	public static int parseSafely(final String input, final int def) {

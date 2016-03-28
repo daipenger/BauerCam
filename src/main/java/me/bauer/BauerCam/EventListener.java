@@ -38,12 +38,12 @@ public final class EventListener {
 	}
 
 	/**
-	 * Disabled and replaced by coremod again (TODO: When optifine is compatible
-	 * with forge, this method might work now)
+	 * Disabled and replaced by coremod again (Optifine B1 for 1.9 is not
+	 * compatible with {@link CameraSetup} again)
 	 */
 	/*
 	 * @SubscribeEvent public void
-	 * onOrientCamera(EntityViewRenderEvent.CameraSetup e) { // e.roll =
+	 * onOrientCamera(EntityViewRenderEvent.CameraSetup e) { e.roll =
 	 * CameraRoll.roll; }
 	 */
 

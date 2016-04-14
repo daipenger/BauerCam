@@ -3,6 +3,7 @@ package me.bauer.BauerCam;
 import org.lwjgl.input.Keyboard;
 
 import me.bauer.BauerCam.Commands.CamCommand;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +32,9 @@ public final class Main {
 
 	@Mod.EventHandler
 	public void postInit(final FMLPostInitializationEvent event) {
+		// Optifine actually sets this -> and prevents CameraSetup from being
+		// used
+		Minecraft.getMinecraft().gameSettings.debugCamEnable = false;
 		ClientRegistry.registerKeyBinding(point);
 		ClientRegistry.registerKeyBinding(cameraClock);
 		ClientRegistry.registerKeyBinding(cameraCounterClock);

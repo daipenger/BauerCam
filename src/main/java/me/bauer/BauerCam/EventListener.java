@@ -1,6 +1,7 @@
 package me.bauer.BauerCam;
 
 import me.bauer.BauerCam.Path.PathHandler;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
@@ -37,14 +38,9 @@ public final class EventListener {
 		PathHandler.tick();
 	}
 
-	/**
-	 * Disabled and replaced by coremod again (Optifine B1 for 1.9 is not
-	 * compatible with {@link CameraSetup} again)
-	 */
-	/*
-	 * @SubscribeEvent public void
-	 * onOrientCamera(EntityViewRenderEvent.CameraSetup e) { e.roll =
-	 * CameraRoll.roll; }
-	 */
+	@SubscribeEvent
+	public void onOrientCamera(EntityViewRenderEvent.CameraSetup e) {
+		e.setRoll(CameraRoll.roll);
+	}
 
 }

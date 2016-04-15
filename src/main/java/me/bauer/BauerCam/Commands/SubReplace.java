@@ -9,7 +9,7 @@ public class SubReplace implements ISubCommand {
 	@Override
 	public void execute(final String[] args) throws CommandException {
 		if (args.length == 1) {
-			throw new CommandException("Usage: /cam replace <point>", new Object[0]);
+			throw new CommandException(getDescription(), new Object[0]);
 		}
 		try {
 			final int index = Integer.parseInt(args[1]) - 1;

@@ -1,8 +1,10 @@
 package me.bauer.BauerCam;
 
 import me.bauer.BauerCam.Path.PathHandler;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 
 public final class EventListener {
@@ -34,17 +36,15 @@ public final class EventListener {
 
 	@SubscribeEvent
 	public void onRender(final RenderTickEvent e) {
-		PathHandler.tick();
+		// RenderTickEvent is called twice per frame: just update the position
+		// at the start of the frame
+		if (e.phase == Phase.START)
+			PathHandler.tick();
 	}
 
-	/**
-	 * Disabled and replaced by coremod again (TODO: When optifine is compatible
-	 * with forge, this method might work now)
-	 */
-	/*
-	 * @SubscribeEvent public void
-	 * onOrientCamera(EntityViewRenderEvent.CameraSetup e) { // e.roll =
-	 * CameraRoll.roll; }
-	 */
+	@SubscribeEvent
+	public void onOrientCamera(EntityViewRenderEvent.CameraSetup e) {
+		e.setRoll(CameraRoll.roll);
+	}
 
 }

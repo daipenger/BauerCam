@@ -24,15 +24,8 @@ version = "1.0"
 group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "BauerCam"
 
-jar {
-	manifest {
-        attributes 'FMLCorePlugin': 'me.bauer.BauerCam.CameraRollCoreMod.CameraRollLoader'
-        attributes 'FMLCorePluginContainsFMLMod': 'true'
-    }
-}
-
 minecraft {
-    version = "1.9-12.16.0.1797-1.9"
+    version = "1.9-12.16.0.1859-1.9"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

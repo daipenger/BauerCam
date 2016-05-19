@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 public final class Main {
 
 	public static final String modId = "BauerCam";
-	public static final String version = "1.0";
+	public static final String version = "1.2";
 	public static final String minecraftTargetVersion = "1.9";
 
 	public final static KeyBinding point = new KeyBinding("Add path point", Keyboard.KEY_P, modId);

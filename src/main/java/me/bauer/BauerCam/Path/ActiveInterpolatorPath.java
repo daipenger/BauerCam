@@ -22,7 +22,7 @@ public final class ActiveInterpolatorPath extends ActivePath {
 		Utils.teleport(this.interpolator.getPoint(0), true);
 	}
 
-	public static void setFactory(IInterpolatorFactory factory) {
+	public static void setFactory(final IInterpolatorFactory factory) {
 		ActiveInterpolatorPath.factory = factory;
 	}
 

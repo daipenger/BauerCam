@@ -34,7 +34,7 @@ public final class Utils {
 	 *            should be true when teleporting over a presumably large
 	 *            distance
 	 */
-	public static void teleport(final Position pos, boolean force) {
+	public static void teleport(final Position pos, final boolean force) {
 		final EntityPlayerSP player = mc.thePlayer;
 		if (player == null) {
 			return;
@@ -54,7 +54,7 @@ public final class Utils {
 		// Workaround: Sending a teleport command
 		// This whole comment is hilarious
 		if (force) {
-			String tpCommand = "/tp " + (int) pos.x + " " + (int) pos.y + " " + (int) pos.z;
+			final String tpCommand = "/tp " + (int) pos.x + " " + (int) pos.y + " " + (int) pos.z;
 			player.sendChatMessage(tpCommand);
 		}
 		player.setLocationAndAngles(pos.x, pos.y, pos.z, pos.yaw, pos.pitch);

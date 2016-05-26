@@ -8,12 +8,12 @@ public final class CubicInterpolator extends Interpolator {
 
 	public static final IInterpolatorFactory factory = new IInterpolatorFactory() {
 		@Override
-		public Interpolator getInterpolator(List<Position> points) {
+		public Interpolator getInterpolator(final List<Position> points) {
 			return new CubicInterpolator(points);
 		}
 	};
 
-	public CubicInterpolator(List<Position> points) {
+	public CubicInterpolator(final List<Position> points) {
 		super(points);
 	}
 
@@ -32,10 +32,10 @@ public final class CubicInterpolator extends Interpolator {
 			section3 = actualLength;
 		}
 
-		final Position y0 = points[section0];
-		final Position y1 = points[section1];
-		final Position y2 = points[section2];
-		final Position y3 = points[section3];
+		final Position y0 = this.points[section0];
+		final Position y1 = this.points[section1];
+		final Position y2 = this.points[section2];
+		final Position y3 = this.points[section3];
 
 		return new Position(interpolate(y0.x, y1.x, y2.x, y3.x, step), interpolate(y0.y, y1.y, y2.y, y3.y, step),
 				interpolate(y0.z, y1.z, y2.z, y3.z, step),

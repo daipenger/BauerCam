@@ -38,12 +38,13 @@ public final class EventListener {
 	public void onRender(final RenderTickEvent e) {
 		// RenderTickEvent is called twice per frame: just update the position
 		// at the start of the frame
-		if (e.phase == Phase.START)
+		if (e.phase == Phase.START) {
 			PathHandler.tick();
+		}
 	}
 
 	@SubscribeEvent
-	public void onOrientCamera(EntityViewRenderEvent.CameraSetup e) {
+	public void onOrientCamera(final EntityViewRenderEvent.CameraSetup e) {
 		e.setRoll(CameraRoll.roll);
 	}
 

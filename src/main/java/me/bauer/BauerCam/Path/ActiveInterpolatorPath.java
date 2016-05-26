@@ -30,7 +30,7 @@ public final class ActiveInterpolatorPath extends ActivePath {
 	public void tick() {
 		this.currentIteration++;
 
-		final Position pos = this.interpolator.getPoint(this.currentIteration / (float) this.iterations);
+		final Position pos = this.interpolator.getPoint(this.currentIteration / (double) this.iterations);
 
 		Utils.teleport(pos, false);
 

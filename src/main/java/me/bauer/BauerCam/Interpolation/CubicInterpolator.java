@@ -1,12 +1,24 @@
 package me.bauer.BauerCam.Interpolation;
 
+import java.util.List;
+
 import me.bauer.BauerCam.Path.Position;
 
-public final class CubicInterpolator implements InterpolatorStrategy {
+public final class CubicInterpolator extends Interpolator {
+
+	public static final IInterpolatorFactory factory = new IInterpolatorFactory() {
+		@Override
+		public Interpolator getInterpolator(List<Position> points) {
+			return new CubicInterpolator(points);
+		}
+	};
+
+	public CubicInterpolator(List<Position> points) {
+		super(points);
+	}
 
 	@Override
-	public Position interpolate(final Position[] points, final int actualLength, final int section1, final int section2,
-			final double step) {
+	protected Position interpolate(final int actualLength, final int section1, final int section2, final double step) {
 		int section0 = section1 - 1;
 		int section3 = section2 + 1;
 

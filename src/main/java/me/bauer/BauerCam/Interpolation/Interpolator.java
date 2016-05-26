@@ -4,11 +4,9 @@ import java.util.List;
 
 import me.bauer.BauerCam.Path.Position;
 
-public final class Interpolator {
+public abstract class Interpolator {
 
-	private static final InterpolatorStrategy strategy = new CubicInterpolator();
-
-	private final Position[] points;
+	protected final Position[] points;
 
 	public Interpolator(final List<Position> points) {
 		this.points = new Position[points.size()];
@@ -31,19 +29,24 @@ public final class Interpolator {
 
 		final double step = section - section1;
 
-		return strategy.interpolate(this.points, actualLength, section1, section2, step);
+		return interpolate(actualLength, section1, section2, step);
 	}
 
 	/**
-	 * public static void setStrategy(int index) { if (index < 0 || index >=
-	 * strategies.length) { Utils.sendInformation("No valid strategy index");
-	 * return; } strategy = strategies[index]; Utils.sendInformation(
-	 * "New strategy set"); }
 	 *
-	 * public static void printStrategies() { Utils.sendInformation(
-	 * "Current interpolator:");
-	 * Utils.sendInformation(strategy.getDescription()); Utils.sendInformation(
-	 * "Available interpolators:"); for (int i = 0; i < strategies.length; i++)
-	 * Utils.sendInformation(i + ": " + strategies[i].getDescription()); }
-	 **/
+	 * @param actualLength
+	 *            is the actual "length" of the array; calculated with
+	 *            points.length - 1 (visually the path-length from index 0 to n)
+	 * @param section1
+	 *            The most recent node the player left behind
+	 * @param section2
+	 *            The upcoming node the player has to pass
+	 * @param step
+	 *            The fraction of which the player has already reached the next
+	 *            node (0-> he is still at section1, 1 -> he is already at
+	 *            section2)
+	 * @return
+	 */
+	protected abstract Position interpolate(int actualLength, int section1, int section2, double step);
+
 }

@@ -4,7 +4,7 @@ public abstract class ActivePath {
 
 	public abstract void tick();
 
-	protected final void pushStopNotice() {
+	protected final void stop() {
 		PathHandler.stopTravelling();
 	}
 

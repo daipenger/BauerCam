@@ -35,7 +35,7 @@ public final class ActiveInterpolatorPath extends ActivePath {
 		Utils.teleport(pos, false);
 
 		if (this.currentIteration >= this.iterations) {
-			pushStopNotice();
+			stop();
 		}
 	}
 

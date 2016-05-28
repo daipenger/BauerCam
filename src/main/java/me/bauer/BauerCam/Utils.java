@@ -54,7 +54,9 @@ public final class Utils {
 		// Workaround: Sending a teleport command
 		// This whole comment is hilarious
 		if (force) {
-			final String tpCommand = "/tp " + (int) pos.x + " " + (int) pos.y + " " + (int) pos.z;
+			// teleport command: /tp [target player] <x> <y> <z> [<y-rot>
+			// <x-rot>]
+			final String tpCommand = "/tp " + pos.x + " " + pos.y + " " + pos.z + " " + pos.yaw + " " + pos.pitch;
 			player.sendChatMessage(tpCommand);
 		}
 		player.setLocationAndAngles(pos.x, pos.y, pos.z, pos.yaw, pos.pitch);

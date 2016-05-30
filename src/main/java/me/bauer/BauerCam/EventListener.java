@@ -45,6 +45,11 @@ public final class EventListener {
 
 	@SubscribeEvent
 	public void onOrientCamera(final EntityViewRenderEvent.CameraSetup e) {
+		// Do not explicitly set roll to 0 (when the player is hurt for example
+		// minecraft uses roll)
+		if (CameraRoll.roll == 0) {
+			return;
+		}
 		e.setRoll(CameraRoll.roll);
 	}
 

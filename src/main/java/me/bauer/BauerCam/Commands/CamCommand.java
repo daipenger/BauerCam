@@ -1,5 +1,6 @@
 package me.bauer.BauerCam.Commands;
 
+import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -19,7 +20,7 @@ public final class CamCommand extends CommandBase {
 	@Override
 	public String getCommandUsage(final ICommandSender sender) {
 		final StringBuilder s = new StringBuilder();
-		s.append("Commands:");
+		s.append(Main.commands);
 		for (final ISubCommand c : commands) {
 			s.append("\n");
 			s.append(c.getDescription());
@@ -36,7 +37,7 @@ public final class CamCommand extends CommandBase {
 	public void execute(final MinecraftServer server, final ICommandSender sender, final String[] args)
 			throws CommandException {
 		if (sender != Utils.mc.thePlayer) {
-			throw new CommandException("This command has to be executed by the player", new Object[0]);
+			throw new CommandException(Main.commandHasToBePlayer.toString(), new Object[0]);
 		}
 		if (args.length == 0) {
 			throw new CommandException(getCommandUsage(sender), new Object[0]);

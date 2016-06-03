@@ -1,0 +1,19 @@
+bauercam.key.addPoint=Add path point
+bauercam.key.clockwise=Roll clockwise
+bauercam.key.counterClockwise=Roll counterclockwise
+bauercam.key.reset=Reset roll
+
+bauercam.path.started=Traveling started
+bauercam.path.stopped=Traveling stopped
+bauercam.path.isEmpty=Path is empty
+bauercam.path.undo=Last one removed
+bauercam.path.doesNotExist=Point not defined
+bauercam.path.reset=Removed all points
+bauercam.path.replace=Replaced point
+bauercam.path.add=Added point
+
+bauercam.cmd.commands=Commands:
+bauercam.cmd.hasToBePlayer=This command has to be executed by the player
+bauercam.cmd.travelledTo=Traveled to Point
+bauercam.cmd.atLeastTwoPoints=You have to set at least two points to start traveling
+bauercam.cmd.invalidFrames=Frames may not be zero or less

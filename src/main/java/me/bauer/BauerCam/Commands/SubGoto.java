@@ -1,5 +1,6 @@
 package me.bauer.BauerCam.Commands;
 
+import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
@@ -21,9 +22,9 @@ public class SubGoto implements ISubCommand {
 			}
 			Utils.teleport(pos, true);
 
-			Utils.sendInformation("Travelled to Point " + (index + 1));
+			Utils.sendInformation(Main.commandTravelledTo + " " + (index + 1));
 		} catch (final NumberFormatException e) {
-			throw new CommandException(args[1] + " is not a valid point", new Object[0]);
+			throw new CommandException(Main.pathDoesNotExist.toString(), new Object[0]);
 		}
 	}
 

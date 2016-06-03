@@ -1,5 +1,6 @@
 package me.bauer.BauerCam.Commands;
 
+import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import net.minecraft.command.CommandException;
@@ -13,10 +14,10 @@ public class SubStart implements ISubCommand {
 		}
 		final long frames = Utils.parseSafely(args[1], 0);
 		if (frames <= 0) {
-			throw new CommandException("Frames may not be zero or less", new Object[0]);
+			throw new CommandException(Main.commandInvalidFrames.toString(), new Object[0]);
 		}
 		if (PathHandler.getWaypointCount() <= 1) {
-			throw new CommandException("You have to set at least two points to start travelling", new Object[0]);
+			throw new CommandException(Main.commandAtLeastTwoPoints.toString(), new Object[0]);
 		}
 		PathHandler.startTravelling(frames);
 	}

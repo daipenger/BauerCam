@@ -1,5 +1,7 @@
 package me.bauer.BauerCam;
 
+import java.io.File;
+
 import org.lwjgl.input.Keyboard;
 
 import me.bauer.BauerCam.Commands.CamCommand;
@@ -15,14 +17,22 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 public final class Main {
 
 	public static final String modId = "BauerCam";
-	public static final String version = "1.5";
-	public static final String minecraftTargetVersion = "1.9.4";
+	public static final String version = "1.6";
+	public static final String minecraftTargetVersion = "1.10.2";
 
 	public final static KeyBinding point = new KeyBinding("bauercam.key.addPoint", Keyboard.KEY_P, modId);
 	public final static KeyBinding cameraClock = new KeyBinding("bauercam.key.clockwise", Keyboard.KEY_L, modId);
 	public final static KeyBinding cameraCounterClock = new KeyBinding("bauercam.key.counterClockwise", Keyboard.KEY_J,
 			modId);
 	public final static KeyBinding cameraReset = new KeyBinding("bauercam.key.reset", Keyboard.KEY_K, modId);
+
+	public final static File bauercamDirectory = new File("bauercam");
+
+	static {
+		if (!bauercamDirectory.exists() && !bauercamDirectory.isFile()) {
+			bauercamDirectory.mkdirs();
+		}
+	}
 
 	@Mod.EventHandler
 	public void init(final FMLInitializationEvent event) {
@@ -44,7 +54,7 @@ public final class Main {
 
 	public final static LocalizedString pathStarted = new LocalizedString("bauercam.path.started");
 	public final static LocalizedString pathStopped = new LocalizedString("bauercam.path.stopped");
-	public final static LocalizedString pathEmpty = new LocalizedString("bauercam.path.isEmpty");
+	public final static LocalizedString pathIsEmpty = new LocalizedString("bauercam.path.isEmpty");
 	public final static LocalizedString pathUndo = new LocalizedString("bauercam.path.undo");
 	public final static LocalizedString pathDoesNotExist = new LocalizedString("bauercam.path.doesNotExist");
 	public final static LocalizedString pathReset = new LocalizedString("bauercam.path.reset");
@@ -56,5 +66,12 @@ public final class Main {
 	public final static LocalizedString commandTravelledTo = new LocalizedString("bauercam.cmd.travelledTo");
 	public final static LocalizedString commandAtLeastTwoPoints = new LocalizedString("bauercam.cmd.atLeastTwoPoints");
 	public final static LocalizedString commandInvalidFrames = new LocalizedString("bauercam.cmd.invalidFrames");
+
+	public final static LocalizedString exportSuccessful = new LocalizedString("bauercam.exporter.successfulWrite");
+	public final static LocalizedString importSuccessful = new LocalizedString("bauercam.exporter.successfulRead");
+	public final static LocalizedString IOError = new LocalizedString("bauercam.exporter.IOError");
+	public final static LocalizedString positionCannotBeParsed = new LocalizedString(
+			"bauercam.exporter.posCannotBeParsed");
+	public final static LocalizedString fileDoesNotExist = new LocalizedString("bauercam.exporter.fileDoesNotExist");
 
 }

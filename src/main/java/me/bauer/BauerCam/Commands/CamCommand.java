@@ -10,7 +10,7 @@ import net.minecraft.server.MinecraftServer;
 public final class CamCommand extends CommandBase {
 
 	private static final ISubCommand[] commands = { new SubClear(), new SubGoto(), new SubReplace(), new SubStart(),
-			new SubStop(), new SubUndo() };
+			new SubStop(), new SubUndo(), new SubExport(), new SubImport() };
 
 	@Override
 	public String getCommandName() {

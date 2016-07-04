@@ -25,7 +25,7 @@ group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-
 archivesBaseName = "BauerCam"
 
 minecraft {
-    version = "1.10.2-12.18.0.2007-1.10.0"
+    version = "1.9.4-12.17.0.1909-1.9.4"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

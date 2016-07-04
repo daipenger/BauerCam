@@ -28,8 +28,9 @@ public abstract class ASubExportImport implements ISubCommand {
 
 		final File file = new File(Main.bauercamDirectory, fileName + extension);
 
+		BufferedWriter writer = null;
 		try {
-			final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false)));
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false)));
 			for (final Position point : points) {
 				writer.write(point.toString());
 				writer.newLine();
@@ -39,6 +40,12 @@ public abstract class ASubExportImport implements ISubCommand {
 			Utils.sendInformation(Main.IOError.toString());
 			Utils.sendInformation(e.getMessage());
 			return;
+		} finally {
+			try {
+				if (writer != null)
+					writer.close();
+			} catch (IOException e) {
+			}
 		}
 
 		Utils.sendInformation(Main.exportSuccessful.toString());
@@ -54,8 +61,9 @@ public abstract class ASubExportImport implements ISubCommand {
 
 		final ArrayList<Position> points = new ArrayList<Position>();
 
+		BufferedReader reader = null;
 		try {
-			final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 
 			String s;
 			while ((s = reader.readLine()) != null) {
@@ -66,12 +74,16 @@ public abstract class ASubExportImport implements ISubCommand {
 				}
 				points.add(point);
 			}
-
-			reader.close();
 		} catch (final IOException e) {
 			Utils.sendInformation(Main.IOError.toString());
 			Utils.sendInformation(e.getMessage());
 			return;
+		} finally {
+			try {
+				if (reader != null)
+					reader.close();
+			} catch (IOException e) {
+			}
 		}
 
 		PathHandler.setWaypoints(points);

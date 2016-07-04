@@ -19,7 +19,7 @@ public class SubImport extends ASubExportImport {
 
 	@Override
 	public String getDescription() {
-		return "/cam import <fileName>";
+		return "/cam import <filename>";
 	}
 
 }

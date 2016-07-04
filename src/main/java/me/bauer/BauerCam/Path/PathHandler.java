@@ -10,6 +10,15 @@ public final class PathHandler {
 	private final static ArrayList<Position> points = new ArrayList<Position>();
 	private static ActivePath currentPath = null;
 
+	public static Position[] getWaypoints() {
+		return points.toArray(new Position[points.size()]);
+	}
+
+	public static void setWaypoints(final ArrayList<Position> points) {
+		PathHandler.points.clear();
+		PathHandler.points.addAll(points);
+	}
+
 	public static void startTravelling(final long iterations) {
 		currentPath = new ActiveInterpolatorPath(points, iterations);
 		Utils.sendInformation(Main.pathStarted.toString());
@@ -48,7 +57,7 @@ public final class PathHandler {
 
 	public static void removeLastWaypoint() {
 		if (points.isEmpty()) {
-			Utils.sendInformation(Main.pathEmpty.toString());
+			Utils.sendInformation(Main.pathIsEmpty.toString());
 			return;
 		}
 		points.remove(points.size() - 1);

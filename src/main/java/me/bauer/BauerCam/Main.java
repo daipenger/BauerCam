@@ -30,7 +30,7 @@ public final class Main {
 
 	static {
 		if (!bauercamDirectory.exists() && !bauercamDirectory.isFile()) {
-			bauercamDirectory.mkdirs();
+			bauercamDirectory.mkdir();
 		}
 	}
 

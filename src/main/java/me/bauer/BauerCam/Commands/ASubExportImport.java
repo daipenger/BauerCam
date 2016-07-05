@@ -14,8 +14,19 @@ import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
+import net.minecraft.command.CommandException;
 
 public abstract class ASubExportImport implements ISubCommand {
+
+	@Override
+	public final void execute(final String[] args) throws CommandException {
+		if (args.length == 1) {
+			throw new CommandException(getDescription(), new Object[0]);
+		}
+		derivedExecute(args[1]);
+	}
+
+	public abstract void derivedExecute(String filename);
 
 	private static final String extension = ".txt";
 
@@ -29,26 +40,28 @@ public abstract class ASubExportImport implements ISubCommand {
 		final File file = new File(Main.bauercamDirectory, fileName + extension);
 
 		BufferedWriter writer = null;
+
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false)));
+
 			for (final Position point : points) {
 				writer.write(point.toString());
 				writer.newLine();
 			}
-			writer.close();
+
+			Utils.sendInformation(Main.exportSuccessful.toString());
 		} catch (final IOException e) {
 			Utils.sendInformation(Main.IOError.toString());
 			Utils.sendInformation(e.getMessage());
-			return;
-		} finally {
-			try {
-				if (writer != null)
-					writer.close();
-			} catch (IOException e) {
-			}
 		}
 
-		Utils.sendInformation(Main.exportSuccessful.toString());
+		if (writer == null) {
+			return;
+		}
+		try {
+			writer.close();
+		} catch (final IOException e) {
+		}
 	}
 
 	public void load(final String fileName) {
@@ -60,8 +73,8 @@ public abstract class ASubExportImport implements ISubCommand {
 		}
 
 		final ArrayList<Position> points = new ArrayList<Position>();
-
 		BufferedReader reader = null;
+
 		try {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 
@@ -74,20 +87,22 @@ public abstract class ASubExportImport implements ISubCommand {
 				}
 				points.add(point);
 			}
+
+			PathHandler.setWaypoints(points);
+			Utils.sendInformation(Main.importSuccessful.toString());
 		} catch (final IOException e) {
 			Utils.sendInformation(Main.IOError.toString());
 			Utils.sendInformation(e.getMessage());
-			return;
-		} finally {
-			try {
-				if (reader != null)
-					reader.close();
-			} catch (IOException e) {
-			}
 		}
 
-		PathHandler.setWaypoints(points);
-		Utils.sendInformation(Main.importSuccessful.toString());
+		if (reader == null) {
+			return;
+		}
+		try {
+			reader.close();
+		} catch (final IOException e) {
+		}
+
 	}
 
 }

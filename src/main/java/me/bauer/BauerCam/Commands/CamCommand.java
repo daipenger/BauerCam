@@ -9,8 +9,8 @@ import net.minecraft.server.MinecraftServer;
 
 public final class CamCommand extends CommandBase {
 
-	private static final ISubCommand[] commands = { new SubClear(), new SubGoto(), new SubReplace(), new SubStart(),
-			new SubStop(), new SubUndo(), new SubExport(), new SubImport() };
+	private static final ISubCommand[] commands = { new SubStart(), new SubStop(), new SubGoto(), new SubReplace(),
+			new SubUndo(), new SubClear(), new SubExport(), new SubImport() };
 
 	@Override
 	public String getCommandName() {

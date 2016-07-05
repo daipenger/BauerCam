@@ -20,6 +20,6 @@ bauercam.cmd.invalidFrames=Frames may not be zero or less
 
 bauercam.exporter.successfulWrite=Successfully exported
 bauercam.exporter.successfulRead=Successfully imported
-bauercam.exporter.IOError=IO error: 
+bauercam.exporter.IOError=IO error:
 bauercam.exporter.posCannotBeParsed=Position cannot be read: 
 bauercam.exporter.fileDoesNotExist=File does not exist

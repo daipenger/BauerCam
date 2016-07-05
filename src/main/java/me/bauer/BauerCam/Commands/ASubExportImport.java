@@ -14,8 +14,19 @@ import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
+import net.minecraft.command.CommandException;
 
 public abstract class ASubExportImport implements ISubCommand {
+
+	@Override
+	public final void execute(String[] args) throws CommandException {
+		if (args.length == 1) {
+			throw new CommandException(getDescription(), new Object[0]);
+		}
+		derivedExecute(args[1]);
+	}
+
+	public abstract void derivedExecute(String filename);
 
 	private static final String extension = ".txt";
 

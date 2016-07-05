@@ -17,13 +17,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 public final class Main {
 
 	public static final String modId = "BauerCam";
-<<<<<<< HEAD
-	public static final String version = "1.6";
-	public static final String minecraftTargetVersion = "1.9.4";
-=======
 	public static final String version = "1.7";
-	public static final String minecraftTargetVersion = "1.10.2";
->>>>>>> refs/remotes/origin/master
+	public static final String minecraftTargetVersion = "1.9.4";
 
 	public final static KeyBinding point = new KeyBinding("bauercam.key.addPoint", Keyboard.KEY_P, modId);
 	public final static KeyBinding cameraClock = new KeyBinding("bauercam.key.clockwise", Keyboard.KEY_L, modId);

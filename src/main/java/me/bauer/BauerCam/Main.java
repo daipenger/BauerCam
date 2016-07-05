@@ -29,7 +29,7 @@ public final class Main {
 	public final static File bauercamDirectory = new File("bauercam");
 
 	static {
-		if (!bauercamDirectory.exists() && !bauercamDirectory.isFile()) {
+		if (!bauercamDirectory.isDirectory()) {
 			bauercamDirectory.mkdir();
 		}
 	}

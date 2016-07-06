@@ -33,7 +33,7 @@ public final class CamCommand extends CommandBase {
 	}
 
 	@Override
-	public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+	public void processCommand(final ICommandSender sender, final String[] args) throws CommandException {
 		if (sender != Utils.mc.thePlayer) {
 			throw new CommandException(Main.commandHasToBePlayer.toString(), new Object[0]);
 		}

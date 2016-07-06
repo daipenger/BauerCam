@@ -1,7 +1,6 @@
 package me.bauer.BauerCam;
 
 import me.bauer.BauerCam.Path.PathHandler;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -47,16 +46,6 @@ public final class EventListener {
 		if (e.phase == Phase.START) {
 			PathHandler.tick();
 		}
-	}
-
-	@SubscribeEvent
-	public void onOrientCamera(final EntityViewRenderEvent.CameraSetup e) {
-		// Do not explicitly set roll to 0 (when the player is hurt for example
-		// minecraft uses roll)
-		if (CameraRoll.roll == 0) {
-			return;
-		}
-		e.setRoll(CameraRoll.roll);
 	}
 
 }

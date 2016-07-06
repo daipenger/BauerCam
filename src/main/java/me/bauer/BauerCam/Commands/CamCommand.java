@@ -5,7 +5,6 @@ import me.bauer.BauerCam.Utils;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.server.MinecraftServer;
 
 public final class CamCommand extends CommandBase {
 
@@ -34,8 +33,7 @@ public final class CamCommand extends CommandBase {
 	}
 
 	@Override
-	public void execute(final MinecraftServer server, final ICommandSender sender, final String[] args)
-			throws CommandException {
+	public void processCommand(ICommandSender sender, String[] args) throws CommandException {
 		if (sender != Utils.mc.thePlayer) {
 			throw new CommandException(Main.commandHasToBePlayer.toString(), new Object[0]);
 		}

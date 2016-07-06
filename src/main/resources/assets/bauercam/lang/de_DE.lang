@@ -1,0 +1,25 @@
+bauercam.key.addPoint=Füge Punkt hinzu
+bauercam.key.clockwise=Im Uhrzeigersinn drehen
+bauercam.key.counterClockwise=Gegen Uhrzeigersinn drehen
+bauercam.key.reset=Drehung zurücksetzen
+
+bauercam.path.started=Kamerafahrt gestartet
+bauercam.path.stopped=Kamerafahrt gestoppt
+bauercam.path.isEmpty=Pfad ist leer
+bauercam.path.undo=Letzter entfernt
+bauercam.path.doesNotExist=Punkt nicht definiert
+bauercam.path.reset=Alles zurückgesetzt
+bauercam.path.replace=Punkt ersetzt:
+bauercam.path.add=Punkt hinzugefügt:
+
+bauercam.cmd.commands=Kommandos:
+bauercam.cmd.hasToBePlayer=Kommandos nur für Spieler sinnvoll
+bauercam.cmd.travelledTo=Reise, reise:
+bauercam.cmd.atLeastTwoPoints=Mindestens 2 Punkte notwendig
+bauercam.cmd.invalidFrames=Zumindest ein Frame sollte es sein
+
+bauercam.exporter.successfulWrite=Erfolgreich exportiert
+bauercam.exporter.successfulRead=Erfolgreich importiert
+bauercam.exporter.IOError=IO Fehler:
+bauercam.exporter.posCannotBeParsed=Position kann nicht gelesen werden: 
+bauercam.exporter.fileDoesNotExist=Datei existiert nicht

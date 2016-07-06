@@ -2,21 +2,31 @@ package me.bauer.BauerCam.Path;
 
 import java.util.ArrayList;
 
+import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 
 public final class PathHandler {
 
-	private final static ArrayList<Position> waypoints = new ArrayList<Position>();
+	private final static ArrayList<Position> points = new ArrayList<Position>();
 	private static ActivePath currentPath = null;
 
+	public static Position[] getWaypoints() {
+		return points.toArray(new Position[points.size()]);
+	}
+
+	public static void setWaypoints(final ArrayList<Position> points) {
+		PathHandler.points.clear();
+		PathHandler.points.addAll(points);
+	}
+
 	public static void startTravelling(final long iterations) {
-		currentPath = new ActiveInterpolatorPath(waypoints, iterations);
-		Utils.sendInformation("Travelling started");
+		currentPath = new ActiveInterpolatorPath(points, iterations);
+		Utils.sendInformation(Main.pathStarted.toString());
 	}
 
 	public static void stopTravelling() {
 		currentPath = null;
-		Utils.sendInformation("Travelling finished");
+		Utils.sendInformation(Main.pathStopped.toString());
 	}
 
 	public static boolean isTravelling() {
@@ -30,46 +40,46 @@ public final class PathHandler {
 	}
 
 	private static boolean isInBounds(final int index) {
-		return index > -1 && index < waypoints.size();
+		return index > -1 && index < points.size();
 	}
 
 	public static void addWaypoint(final Position pos) {
-		waypoints.add(pos);
-		Utils.sendInformation("Added Point " + getWaypointCount());
+		points.add(pos);
+		Utils.sendInformation(Main.pathAdd + " " + getWaypointCount());
 	}
 
 	public static Position getWaypoint(final int index) {
 		if (isInBounds(index)) {
-			return waypoints.get(index);
+			return points.get(index);
 		}
 		return null;
 	}
 
 	public static void removeLastWaypoint() {
-		if (waypoints.isEmpty()) {
-			Utils.sendInformation("Path is empty");
+		if (points.isEmpty()) {
+			Utils.sendInformation(Main.pathIsEmpty.toString());
 			return;
 		}
-		waypoints.remove(waypoints.size() - 1);
-		Utils.sendInformation("Last one removed");
+		points.remove(points.size() - 1);
+		Utils.sendInformation(Main.pathUndo.toString());
 	}
 
 	public static void replace(final Position position, final int index) {
 		if (isInBounds(index)) {
-			waypoints.set(index, position);
-			Utils.sendInformation("Replaced point " + (index + 1));
+			points.set(index, position);
+			Utils.sendInformation(Main.pathReplace + " " + (index + 1));
 			return;
 		}
-		Utils.sendInformation("This point does not exist");
+		Utils.sendInformation(Main.pathDoesNotExist.toString());
 	}
 
 	public static void clearWaypoints() {
-		waypoints.clear();
-		Utils.sendInformation("Reset performed");
+		points.clear();
+		Utils.sendInformation(Main.pathReset.toString());
 	}
 
 	public static int getWaypointCount() {
-		return waypoints.size();
+		return points.size();
 	}
 
 }

@@ -5,7 +5,7 @@ import me.bauer.BauerCam.Path.Position;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.text.TextComponentString;
 
 public final class Utils {
 
@@ -34,7 +34,7 @@ public final class Utils {
 	 *            should be true when teleporting over a presumably large
 	 *            distance
 	 */
-	public static void teleport(final Position pos, boolean force) {
+	public static void teleport(final Position pos, final boolean force) {
 		final EntityPlayerSP player = mc.thePlayer;
 		if (player == null) {
 			return;
@@ -54,7 +54,9 @@ public final class Utils {
 		// Workaround: Sending a teleport command
 		// This whole comment is hilarious
 		if (force) {
-			String tpCommand = "/tp " + (int) pos.x + " " + (int) pos.y + " " + (int) pos.z;
+			// teleport command: /tp [target player] <x> <y> <z> [<y-rot>
+			// <x-rot>]
+			final String tpCommand = "/tp " + pos.x + " " + pos.y + " " + pos.z + " " + pos.yaw + " " + pos.pitch;
 			player.sendChatMessage(tpCommand);
 		}
 		player.setLocationAndAngles(pos.x, pos.y, pos.z, pos.yaw, pos.pitch);
@@ -66,7 +68,7 @@ public final class Utils {
 		if (player == null) {
 			return;
 		}
-		player.addChatMessage(new ChatComponentText(msg));
+		player.addChatMessage(new TextComponentString(msg));
 	}
 
 	public static int parseSafely(final String input, final int def) {

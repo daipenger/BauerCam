@@ -3,8 +3,8 @@
   "modid": "BauerCam",
   "name": "BauerCam",
   "description": "A frame time based camera path tool",
-  "version": "1.0",
-  "mcversion": "1.8.9",
+  "version": "1.7",
+  "mcversion": "1.10.2",
   "authorList": ["Gregosteros"]
 }
 ]

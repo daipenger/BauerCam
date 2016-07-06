@@ -1,13 +1,29 @@
 package me.bauer.BauerCam;
 
 import me.bauer.BauerCam.Path.PathHandler;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 
 public final class EventListener {
 
-	private static final float anglePerKeyPress = (float) Math.toRadians(2.5);
+	@SubscribeEvent
+	public void onKeyInput(final KeyInputEvent e) {
+		if (PathHandler.isTravelling()) {
+			return;
+		}
+
+		if (Main.point.isPressed()) {
+			Utils.addPosition();
+		}
+
+		if (Main.cameraReset.isPressed()) {
+			CameraRoll.reset();
+		}
+	}
 
 	@SubscribeEvent
 	public void onTick(final TickEvent e) {
@@ -16,34 +32,31 @@ public final class EventListener {
 		}
 
 		if (Main.cameraClock.isKeyDown()) {
-			CameraRoll.roll += anglePerKeyPress;
+			CameraRoll.rotateClockWise();
 		}
 
 		if (Main.cameraCounterClock.isKeyDown()) {
-			CameraRoll.roll -= anglePerKeyPress;
-		}
-
-		if (Main.point.isPressed()) {
-			Utils.addPosition();
-		}
-
-		if (Main.cameraReset.isPressed()) {
-			CameraRoll.roll = 0;
+			CameraRoll.rotateCounterClockWise();
 		}
 	}
 
 	@SubscribeEvent
 	public void onRender(final RenderTickEvent e) {
-		PathHandler.tick();
+		// RenderTickEvent is called twice per frame: just update the position
+		// at the start of the frame
+		if (e.phase == Phase.START) {
+			PathHandler.tick();
+		}
 	}
 
-	/**
-	 * Replaced with core mod for optifine support
-	 */
-	/**
-	 * @SubscribeEvent public void
-	 *                 onOrientCamera(EntityViewRenderEvent.CameraSetup e) {
-	 *                 e.roll = CameraRoll.roll; }
-	 */
+	@SubscribeEvent
+	public void onOrientCamera(final EntityViewRenderEvent.CameraSetup e) {
+		// Do not explicitly set roll to 0 (when the player is hurt for example
+		// minecraft uses roll)
+		if (CameraRoll.roll == 0) {
+			return;
+		}
+		e.setRoll(CameraRoll.roll);
+	}
 
 }

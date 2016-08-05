@@ -4,17 +4,23 @@ import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 
 public final class Utils {
 
 	public static final Minecraft mc = Minecraft.getMinecraft();
+	/**
+	 * Describes how often {@link PathHandler#tick()} is called per frame
+	 * <p>
+	 * calls are made from
+	 * {@link EventListener#onRender(net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent)})
+	 */
+	public static final int renderPhases = Phase.values().length;
 
 	public static Position getPosition(final EntityPlayer player) {
-		// correcting yaw angle is not wanted for a fully functional
-		// interpolation (see teleport method for more information on position
-		// handling)
 		return new Position(player.posX, player.posY, player.posZ, player.rotationPitch, player.rotationYaw,
 				CameraRoll.roll);
 	}
@@ -39,28 +45,34 @@ public final class Utils {
 		if (player == null) {
 			return;
 		}
-		// This procedure here is crucial! When not done properly (eg.
-		// setPositionAndRotation is not properly) it can lead to
-		// spinning camera movement (probably yaw angle which may incorrectly be
-		// bounded
-		// inside -180 and 180 degrees)
-		// FUN FACT: PixelCam had the same issue!
-		// FUN FACT 2: setLocationAndAngles solves this but instead results in
-		// desync
-		// with
-		// the server when the client is teleported inside an unloaded chunk on
-		// the client side (however this did not quite occur when just using
-		// /cam goto)
-		// Workaround: Sending a teleport command
-		// This whole comment is hilarious
+		// force tackles desync
 		if (force) {
-			// teleport command: /tp [target player] <x> <y> <z> [<y-rot>
+			// teleport command syntax: /tp [target player] <x> <y> <z> [<y-rot>
 			// <x-rot>]
 			final String tpCommand = "/tp " + pos.x + " " + pos.y + " " + pos.z + " " + pos.yaw + " " + pos.pitch;
 			player.sendChatMessage(tpCommand);
 		}
-		player.setLocationAndAngles(pos.x, pos.y, pos.z, pos.yaw, pos.pitch);
+		setPositionProperly(player, pos);
 		CameraRoll.roll = pos.roll;
+	}
+
+	public static void setPositionProperly(final Entity entity, final Position pos) {
+		// This procedure here is crucial! When not done properly (eg.
+		// setPositionAndRotation is not properly) it can lead to
+		// spinning camera movement (probably yaw angle which may incorrectly be
+		// bounded inside -180 and 180 degrees)
+		// FUN FACT: PixelCam had the same issue!
+		// FUN FACT 2: setLocationAndAngles solves this but instead results in
+		// desync when setting the position of entities both in the client world
+		// and server world
+		// -> not loading chunks anymore on the client side
+		// Workaround: Send a teleport command
+		entity.setLocationAndAngles(pos.x, pos.y, pos.z, pos.yaw, pos.pitch);
+		// Prevents inaccurate/wobbly/jerky angle movement (setLocationAndAngles
+		// only sets previous values for x,y,z -> partial tick interpolation is
+		// still also done for angles by the engine)
+		entity.prevRotationYaw = pos.yaw;
+		entity.prevRotationPitch = pos.pitch;
 	}
 
 	public static void sendInformation(final String msg) {

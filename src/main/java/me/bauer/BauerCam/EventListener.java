@@ -5,7 +5,6 @@ import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 
 public final class EventListener {
@@ -42,11 +41,7 @@ public final class EventListener {
 
 	@SubscribeEvent
 	public void onRender(final RenderTickEvent e) {
-		// RenderTickEvent is called twice per frame: just update the position
-		// at the start of the frame
-		if (e.phase == Phase.START) {
-			PathHandler.tick();
-		}
+		PathHandler.tick();
 	}
 
 	@SubscribeEvent

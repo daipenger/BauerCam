@@ -19,8 +19,8 @@ public final class PathHandler {
 		PathHandler.points.addAll(points);
 	}
 
-	public static void startTravelling(final long iterations) {
-		currentPath = new ActiveInterpolatorPath(points, iterations);
+	public static void startTravelling(final long frames) {
+		currentPath = new ActiveInterpolatorPath(points, frames * Utils.renderPhases);
 		Utils.sendInformation(Main.pathStarted.toString());
 	}
 

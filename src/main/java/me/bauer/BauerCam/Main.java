@@ -16,15 +16,19 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 @Mod(modid = Main.modId, version = Main.version, clientSideOnly = true, acceptedMinecraftVersions = Main.minecraftTargetVersion)
 public final class Main {
 
-	public static final String modId = "BauerCam";
+	/**
+	 * Lower case will be required for 1.11 and beyond
+	 */
+	public static final String modId = "bauercam";
+	public static final String name = "BauerCam";
 	public static final String version = "1.7";
 	public static final String minecraftTargetVersion = "1.10.2";
 
-	public final static KeyBinding point = new KeyBinding("bauercam.key.addPoint", Keyboard.KEY_P, modId);
-	public final static KeyBinding cameraClock = new KeyBinding("bauercam.key.clockwise", Keyboard.KEY_L, modId);
+	public final static KeyBinding point = new KeyBinding("bauercam.key.addPoint", Keyboard.KEY_P, name);
+	public final static KeyBinding cameraClock = new KeyBinding("bauercam.key.clockwise", Keyboard.KEY_L, name);
 	public final static KeyBinding cameraCounterClock = new KeyBinding("bauercam.key.counterClockwise", Keyboard.KEY_J,
-			modId);
-	public final static KeyBinding cameraReset = new KeyBinding("bauercam.key.reset", Keyboard.KEY_K, modId);
+			name);
+	public final static KeyBinding cameraReset = new KeyBinding("bauercam.key.reset", Keyboard.KEY_K, name);
 
 	public final static File bauercamDirectory = new File("bauercam");
 

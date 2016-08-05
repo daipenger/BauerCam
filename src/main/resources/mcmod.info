@@ -1,6 +1,6 @@
 [
 {
-  "modid": "BauerCam",
+  "modid": "bauercam",
   "name": "BauerCam",
   "description": "A frame time based camera path tool",
   "version": "1.7",

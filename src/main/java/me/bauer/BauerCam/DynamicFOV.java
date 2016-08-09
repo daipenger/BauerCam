@@ -1,28 +1,56 @@
 package me.bauer.BauerCam;
 
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.GameSettings.Options;
+
 public final class DynamicFOV {
 
-	private static final float fovPerKeyPress = 0.2f;
+	private static final GameSettings settings = Utils.mc.gameSettings;
+
+	/**
+	 * Extends default of {@link Options#FOV#getValueMax()}
+	 */
+	private static final float upperBound = 150;
+	/**
+	 * Extends default of {@link Options#FOV#getValueMin()}
+	 */
+	private static final float lowerBound = 5;
+	/**
+	 * Should be 70
+	 */
+	private static final float defaultFOV = (Options.FOV.getValueMax() + Options.FOV.getValueMin()) / 2;
+
+	private static final float fovPerKeyPress = 0.25f;
 
 	public static void increase() {
-		Utils.mc.gameSettings.fovSetting += fovPerKeyPress;
+		settings.fovSetting += fovPerKeyPress;
+		verify();
 	}
 
 	public static void decrease() {
-		Utils.mc.gameSettings.fovSetting -= fovPerKeyPress;
+		settings.fovSetting -= fovPerKeyPress;
+		verify();
 	}
 
 	public static void reset() {
-		// Hard coded game default
-		Utils.mc.gameSettings.fovSetting = 70;
+		settings.fovSetting = defaultFOV;
 	}
 
 	public static void set(float fov) {
-		Utils.mc.gameSettings.fovSetting = fov;
+		settings.fovSetting = fov;
+		verify();
 	}
 
 	public static float get() {
-		return Utils.mc.gameSettings.fovSetting;
+		return settings.fovSetting;
+	}
+
+	private static void verify() {
+		if (settings.fovSetting > upperBound) {
+			settings.fovSetting = upperBound;
+		} else if (settings.fovSetting < lowerBound) {
+			settings.fovSetting = lowerBound;
+		}
 	}
 
 }

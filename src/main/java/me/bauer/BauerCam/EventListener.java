@@ -4,7 +4,7 @@ import me.bauer.BauerCam.Path.PathHandler;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 
 public final class EventListener {
@@ -29,7 +29,7 @@ public final class EventListener {
 	}
 
 	@SubscribeEvent
-	public void onTick(final TickEvent e) {
+	public void onTick(final ClientTickEvent e) {
 		if (PathHandler.isTravelling()) {
 			return;
 		}

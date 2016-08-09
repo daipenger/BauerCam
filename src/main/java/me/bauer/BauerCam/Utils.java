@@ -5,7 +5,6 @@ import me.bauer.BauerCam.Path.Position;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 
@@ -20,9 +19,9 @@ public final class Utils {
 	 */
 	public static final int renderPhases = Phase.values().length;
 
-	public static Position getPosition(final EntityPlayer player) {
+	public static Position getPosition(final EntityPlayerSP player) {
 		return new Position(player.posX, player.posY, player.posZ, player.rotationPitch, player.rotationYaw,
-				CameraRoll.roll);
+				CameraRoll.roll, DynamicFOV.get());
 	}
 
 	public static void addPosition() {
@@ -54,9 +53,10 @@ public final class Utils {
 		}
 		setPositionProperly(player, pos);
 		CameraRoll.roll = pos.roll;
+		DynamicFOV.set(pos.fov);
 	}
 
-	public static void setPositionProperly(final Entity entity, final Position pos) {
+	private static void setPositionProperly(final Entity entity, final Position pos) {
 		// This procedure here is crucial! When not done properly (eg.
 		// setPositionAndRotation is not properly) it can lead to
 		// spinning camera movement (probably yaw angle which may incorrectly be

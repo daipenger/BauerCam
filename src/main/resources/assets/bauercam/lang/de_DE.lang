@@ -1,4 +1,7 @@
 bauercam.key.addPoint=Füge Punkt hinzu
+bauercam.key.fovHigh=Erhöhe FOV
+bauercam.key.fovLow=Verringere FOV
+bauercam.key.fovReset=FOV zurücksetzen
 bauercam.key.clockwise=Im Uhrzeigersinn drehen
 bauercam.key.counterClockwise=Gegen Uhrzeigersinn drehen
 bauercam.key.reset=Drehung zurücksetzen

@@ -1,4 +1,7 @@
 bauercam.key.addPoint=Add path point
+bauercam.key.fovHigh=Increase FOV
+bauercam.key.fovLow=Decrease FOV
+bauercam.key.fovReset=Reset FOV
 bauercam.key.clockwise=Roll clockwise
 bauercam.key.counterClockwise=Roll counterclockwise
 bauercam.key.reset=Reset roll

@@ -22,6 +22,10 @@ public final class EventListener {
 		if (Main.cameraReset.isPressed()) {
 			CameraRoll.reset();
 		}
+
+		if (Main.fovReset.isPressed()) {
+			DynamicFOV.reset();
+		}
 	}
 
 	@SubscribeEvent
@@ -36,6 +40,14 @@ public final class EventListener {
 
 		if (Main.cameraCounterClock.isKeyDown()) {
 			CameraRoll.rotateCounterClockWise();
+		}
+
+		if (Main.fovHigh.isKeyDown()) {
+			DynamicFOV.increase();
+		}
+
+		if (Main.fovLow.isKeyDown()) {
+			DynamicFOV.decrease();
 		}
 	}
 

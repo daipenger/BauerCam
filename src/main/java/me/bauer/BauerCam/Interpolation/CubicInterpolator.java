@@ -24,7 +24,7 @@ public final class CubicInterpolator extends Interpolator {
 
 		// Bounding the outer nodes inside the array if necessary
 		// I could extrapolate these points, but this is a quick and acceptable
-		// solution
+		// solution: It even creates some kind of fade in and out
 		if (section0 < 0) {
 			section0 = 0;
 		}
@@ -42,7 +42,8 @@ public final class CubicInterpolator extends Interpolator {
 				interpolateSophisticated(y0.z, y1.z, y2.z, y3.z, step),
 				interpolateSimple(y0.pitch, y1.pitch, y2.pitch, y3.pitch, (float) step),
 				interpolateSimple(y0.yaw, y1.yaw, y2.yaw, y3.yaw, (float) step),
-				interpolateSimple(y0.roll, y1.roll, y2.roll, y3.roll, (float) step));
+				interpolateSimple(y0.roll, y1.roll, y2.roll, y3.roll, (float) step),
+				interpolateSimple(y0.fov, y1.fov, y2.fov, y3.fov, (float) step));
 	}
 
 	/**

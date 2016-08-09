@@ -3,37 +3,32 @@ package me.bauer.BauerCam.Path;
 import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 
-public final class Position {
+public final class Position extends Vector3D {
 
-	public final double x;
-	public final double y;
-	public final double z;
 	public final float pitch;
 	public final float yaw;
 	public final float roll;
+	public final float fov;
 
 	public Position(final double x, final double y, final double z, final float pitch, final float yaw,
-			final float roll) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
+			final float roll, final float fov) {
+		super(x, y, z);
 		this.pitch = pitch;
 		this.yaw = yaw;
 		this.roll = roll;
+		this.fov = fov;
 	}
-
-	private static final String pad = ":";
 
 	@Override
 	public String toString() {
-		return this.x + pad + this.y + pad + this.z + pad + this.pitch + pad + this.yaw + pad + this.roll;
+		return super.toString() + padding + this.pitch + padding + this.yaw + padding + this.roll + padding + this.fov;
 	}
 
 	public static Position fromString(final String input) {
 		final String error = Main.positionCannotBeParsed + input;
 
-		final String[] parts = input.split(pad);
-		if (parts.length != 6) {
+		final String[] parts = input.split(padding);
+		if (parts.length != 7) {
 			Utils.sendInformation(error);
 			return null;
 		}
@@ -45,8 +40,9 @@ public final class Position {
 			final float pitch = Float.parseFloat(parts[3]);
 			final float yaw = Float.parseFloat(parts[4]);
 			final float roll = Float.parseFloat(parts[5]);
+			final float fov = Float.parseFloat(parts[6]);
 
-			return new Position(x, y, z, pitch, yaw, roll);
+			return new Position(x, y, z, pitch, yaw, roll, fov);
 		} catch (final NumberFormatException e) {
 			Utils.sendInformation(error);
 			return null;

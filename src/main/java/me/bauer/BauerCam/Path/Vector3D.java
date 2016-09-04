@@ -48,7 +48,7 @@ public class Vector3D {
 
 		// Minecraft specific corrections
 		pitch = -pitch;
-		yaw += 90;
+		yaw -= 90;
 
 		return new PolarCoordinates((float) pitch, (float) yaw);
 	}

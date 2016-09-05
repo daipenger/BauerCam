@@ -14,7 +14,8 @@ public class TargetInterpolator implements PolarCoordinatesInterpolator {
 	@Override
 	public void interpolatePolarCoordinates(final PositionBuilder builder, final Position y0, final Position y1,
 			final Position y2, final Position y3, final double step) {
-		builder.setPolarCoordinates(builder.getPosition().lookAt(this.target));
+		// 1.62 is the default height for player eye positions
+		builder.setPolarCoordinates(builder.getPosition().addY(1.62).lookAt(this.target));
 	}
 
 }

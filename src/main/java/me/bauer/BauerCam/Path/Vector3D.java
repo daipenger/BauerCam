@@ -36,6 +36,13 @@ public class Vector3D {
 		return new Vector3D(this.x - other.x, this.y - other.y, this.z - other.z);
 	}
 
+	/**
+	 * Used for camera entity location corrections
+	 */
+	public Vector3D addY(final double additionalY) {
+		return new Vector3D(x, this.y + additionalY, z);
+	}
+
 	public PolarCoordinates lookAt(final Vector3D target) {
 		final Vector3D cartesianCoordinates = target.subtract(this).normalize();
 

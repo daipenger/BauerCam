@@ -14,6 +14,8 @@ bauercam.path.doesNotExist=Punkt nicht definiert
 bauercam.path.reset=Alles zurückgesetzt
 bauercam.path.replace=Punkt ersetzt:
 bauercam.path.add=Punkt hinzugefügt:
+bauercam.path.targetSet=Kamerafahrt wird auf deine jetzige Position fokussiert werden
+bauercam.path.targetRemoved=Fokussierung ausgeschaltet
 
 bauercam.cmd.commands=Kommandos:
 bauercam.cmd.hasToBePlayer=Kommandos nur für Spieler sinnvoll

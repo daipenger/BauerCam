@@ -21,7 +21,7 @@ public final class Main {
 	 */
 	public static final String modId = "bauercam";
 	public static final String name = "BauerCam";
-	public static final String version = "1.8";
+	public static final String version = "1.9";
 	public static final String minecraftTargetVersion = "1.10.2";
 
 	public final static KeyBinding point = new KeyBinding("bauercam.key.addPoint", Keyboard.KEY_P, name);
@@ -70,6 +70,8 @@ public final class Main {
 	public final static LocalizedString pathReset = new LocalizedString("bauercam.path.reset");
 	public final static LocalizedString pathReplace = new LocalizedString("bauercam.path.replace");
 	public final static LocalizedString pathAdd = new LocalizedString("bauercam.path.add");
+	public final static LocalizedString pathTargetSet = new LocalizedString("bauercam.path.targetSet");
+	public final static LocalizedString pathTargetRemoved = new LocalizedString("bauercam.path.targetRemoved");
 
 	public final static LocalizedString commands = new LocalizedString("bauercam.cmd.commands");
 	public final static LocalizedString commandHasToBePlayer = new LocalizedString("bauercam.cmd.hasToBePlayer");

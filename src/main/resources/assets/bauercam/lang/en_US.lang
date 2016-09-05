@@ -14,6 +14,8 @@ bauercam.path.doesNotExist=Point not defined
 bauercam.path.reset=Removed all points
 bauercam.path.replace=Replaced point
 bauercam.path.add=Added point
+bauercam.path.targetSet=Camera path will be focused to your current position
+bauercam.path.targetRemoved=Removed camera focus
 
 bauercam.cmd.commands=Commands:
 bauercam.cmd.hasToBePlayer=This command has to be executed by the player

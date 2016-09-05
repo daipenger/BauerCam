@@ -13,6 +13,7 @@ public interface AdditionalAngleInterpolator {
 	 * should be already populated
 	 * <p>
 	 * This invoke HAS TO calculate fov and roll
+	 *
 	 * @param builder
 	 *            The builder where all intermediate results are to be saved to
 	 * @param y0

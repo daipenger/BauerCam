@@ -36,7 +36,7 @@ public final class DynamicFOV {
 		settings.fovSetting = defaultFOV;
 	}
 
-	public static void set(float fov) {
+	public static void set(final float fov) {
 		settings.fovSetting = fov;
 		verify();
 	}

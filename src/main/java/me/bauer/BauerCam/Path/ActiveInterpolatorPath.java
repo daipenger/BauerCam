@@ -3,13 +3,9 @@ package me.bauer.BauerCam.Path;
 import java.util.List;
 
 import me.bauer.BauerCam.Utils;
-import me.bauer.BauerCam.Interpolation.CubicInterpolator;
-import me.bauer.BauerCam.Interpolation.IInterpolatorFactory;
 import me.bauer.BauerCam.Interpolation.Interpolator;
 
 public final class ActiveInterpolatorPath extends ActivePath {
-
-	private static IInterpolatorFactory factory = CubicInterpolator.factory;
 
 	private final Interpolator interpolator;
 	private final long iterations;

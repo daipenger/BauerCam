@@ -20,7 +20,7 @@ public class Vector3D {
 	}
 
 	public final double lengthSquared() {
-		return x * x + y * y + z * z;
+		return this.x * this.x + this.y * this.y + this.z * this.z;
 	}
 
 	public final double length() {
@@ -28,16 +28,16 @@ public class Vector3D {
 	}
 
 	public Vector3D normalize() {
-		double length = length();
-		return new Vector3D(x / length, y / length, z / length);
+		final double length = length();
+		return new Vector3D(this.x / length, this.y / length, this.z / length);
 	}
 
-	public Vector3D subtract(Vector3D other) {
-		return new Vector3D(x - other.x, y - other.y, z - other.z);
+	public Vector3D subtract(final Vector3D other) {
+		return new Vector3D(this.x - other.x, this.y - other.y, this.z - other.z);
 	}
 
-	public PolarCoordinates lookAt(Vector3D target) {
-		Vector3D cartesianCoordinates = target.subtract(this).normalize();
+	public PolarCoordinates lookAt(final Vector3D target) {
+		final Vector3D cartesianCoordinates = target.subtract(this).normalize();
 
 		double pitch = Math.asin(cartesianCoordinates.y);
 		double yaw = Math.atan2(cartesianCoordinates.z, cartesianCoordinates.x);

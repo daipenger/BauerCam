@@ -1,7 +1,5 @@
 package me.bauer.BauerCam.Path;
 
-import java.util.List;
-
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Interpolation.Interpolator;
 
@@ -12,14 +10,10 @@ public final class ActiveInterpolatorPath extends ActivePath {
 
 	private long currentIteration;
 
-	public ActiveInterpolatorPath(final List<Position> points, final long iterations) {
+	public ActiveInterpolatorPath(Interpolator interpolator, final long iterations) {
 		this.iterations = iterations;
-		this.interpolator = factory.getInterpolator(points);
+		this.interpolator = interpolator;
 		Utils.teleport(this.interpolator.getPoint(0), true);
-	}
-
-	public static void setFactory(final IInterpolatorFactory factory) {
-		ActiveInterpolatorPath.factory = factory;
 	}
 
 	@Override

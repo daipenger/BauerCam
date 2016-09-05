@@ -4,23 +4,39 @@ import java.util.ArrayList;
 
 import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
+import me.bauer.BauerCam.Interpolation.CubicInterpolator;
+import me.bauer.BauerCam.Interpolation.Interpolator;
+import me.bauer.BauerCam.Interpolation.TargetInterpolator;
 
 public final class PathHandler {
 
 	private final static ArrayList<Position> points = new ArrayList<Position>();
+	private static Vector3D target;
 	private static ActivePath currentPath = null;
 
-	public static Position[] getWaypoints() {
-		return points.toArray(new Position[points.size()]);
+	// Additional path properties
+
+	public static void setTarget(Vector3D target) {
+		PathHandler.target = target;
 	}
 
-	public static void setWaypoints(final ArrayList<Position> points) {
-		PathHandler.points.clear();
-		PathHandler.points.addAll(points);
+	public static void removeTarget() {
+		PathHandler.target = null;
 	}
+
+	// End of path properties
+
+	// Travel control
 
 	public static void startTravelling(final long frames) {
-		currentPath = new ActiveInterpolatorPath(points, frames * Utils.renderPhases);
+		final long iterations = frames * Utils.renderPhases;
+		final Interpolator interpolator = target == null
+				? new Interpolator(points, CubicInterpolator.instance, CubicInterpolator.instance,
+						CubicInterpolator.instance)
+				: new Interpolator(points, CubicInterpolator.instance, new TargetInterpolator(target),
+						CubicInterpolator.instance);
+
+		currentPath = new ActiveInterpolatorPath(interpolator, iterations);
 		Utils.sendInformation(Main.pathStarted.toString());
 	}
 
@@ -33,6 +49,10 @@ public final class PathHandler {
 		return currentPath != null;
 	}
 
+	// End of travel control
+
+	// Auxiliary methods
+
 	public static void tick() {
 		if (isTravelling()) {
 			currentPath.tick();
@@ -41,6 +61,19 @@ public final class PathHandler {
 
 	private static boolean isInBounds(final int index) {
 		return index > -1 && index < points.size();
+	}
+
+	// End of auxiliary methods
+
+	// Waypoints
+
+	public static Position[] getWaypoints() {
+		return points.toArray(new Position[points.size()]);
+	}
+
+	public static void setWaypoints(final ArrayList<Position> points) {
+		PathHandler.points.clear();
+		PathHandler.points.addAll(points);
 	}
 
 	public static void addWaypoint(final Position pos) {
@@ -81,5 +114,7 @@ public final class PathHandler {
 	public static int getWaypointCount() {
 		return points.size();
 	}
+
+	// End of waypoints
 
 }

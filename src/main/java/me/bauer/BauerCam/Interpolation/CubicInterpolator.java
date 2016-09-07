@@ -9,6 +9,9 @@ public final class CubicInterpolator
 
 	public static final CubicInterpolator instance = new CubicInterpolator();
 
+	private CubicInterpolator() {
+	}
+
 	@Override
 	public void interpolatePosition(final PositionBuilder builder, final Position y0, final Position y1,
 			final Position y2, final Position y3, final double step) {

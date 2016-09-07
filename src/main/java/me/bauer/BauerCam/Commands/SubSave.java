@@ -38,7 +38,7 @@ public class SubSave extends ASubExportImport {
 				writer.newLine();
 			}
 
-			Utils.sendInformation(Main.exportSuccessful.toString());
+			Utils.sendInformation(Main.exportSuccessful + file.getAbsolutePath());
 		} catch (final IOException e) {
 			Utils.sendInformation(Main.IOError.toString());
 			Utils.sendInformation(e.getMessage());

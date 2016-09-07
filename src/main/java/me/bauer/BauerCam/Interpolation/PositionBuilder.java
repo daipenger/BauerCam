@@ -8,8 +8,8 @@ public final class PositionBuilder {
 
 	private Vector3D position;
 	private PolarCoordinates polarCoordinates;
-	private Float roll;
-	private Float fov;
+	private float roll;
+	private float fov;
 
 	public PositionBuilder setPosition(final Vector3D position) {
 		this.position = position;

@@ -28,3 +28,4 @@ bauercam.exporter.successfulRead=Erfolgreich importiert
 bauercam.exporter.IOError=IO Fehler:
 bauercam.exporter.posCannotBeParsed=Position kann nicht gelesen werden: 
 bauercam.exporter.fileDoesNotExist=Datei existiert nicht
+bauercam.exporter.fileAlreadyExists=Datei existiert bereits. Lösche sie per Hand oder benenne es anders

@@ -85,5 +85,6 @@ public final class Main {
 	public final static LocalizedString positionCannotBeParsed = new LocalizedString(
 			"bauercam.exporter.posCannotBeParsed");
 	public final static LocalizedString fileDoesNotExist = new LocalizedString("bauercam.exporter.fileDoesNotExist");
+	public final static LocalizedString fileAlreadyExists = new LocalizedString("bauercam.exporter.fileAlreadyExists");
 
 }

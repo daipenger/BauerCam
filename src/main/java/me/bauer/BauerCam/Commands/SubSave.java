@@ -23,6 +23,11 @@ public class SubSave extends ASubExportImport {
 
 		final File file = new File(Main.bauercamDirectory, filename + extension);
 
+		if (file.isFile()) {
+			Utils.sendInformation(Main.fileAlreadyExists.toString());
+			return;
+		}
+
 		BufferedWriter writer = null;
 
 		try {

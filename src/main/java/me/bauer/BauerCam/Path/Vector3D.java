@@ -40,7 +40,7 @@ public class Vector3D {
 	 * Used for camera entity location corrections
 	 */
 	public Vector3D addY(final double additionalY) {
-		return new Vector3D(x, this.y + additionalY, z);
+		return new Vector3D(this.x, this.y + additionalY, this.z);
 	}
 
 	public PolarCoordinates lookAt(final Vector3D target) {

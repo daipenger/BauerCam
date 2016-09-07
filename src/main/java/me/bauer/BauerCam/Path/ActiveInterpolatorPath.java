@@ -10,7 +10,7 @@ public final class ActiveInterpolatorPath extends ActivePath {
 
 	private long currentIteration;
 
-	public ActiveInterpolatorPath(Interpolator interpolator, final long iterations) {
+	public ActiveInterpolatorPath(final Interpolator interpolator, final long iterations) {
 		this.iterations = iterations;
 		this.interpolator = interpolator;
 		Utils.teleport(this.interpolator.getPoint(0), true);

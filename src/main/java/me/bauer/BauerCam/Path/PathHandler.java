@@ -16,7 +16,7 @@ public final class PathHandler {
 
 	// Additional path properties
 
-	public static void setTarget(Vector3D target) {
+	public static void setTarget(final Vector3D target) {
 		PathHandler.target = target;
 	}
 

@@ -12,7 +12,7 @@ import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
 
-public class SubImport extends ASubExportImport {
+public class SubLoad extends ASubExportImport {
 
 	@Override
 	protected void derivedExecute(final String filename) {
@@ -57,12 +57,12 @@ public class SubImport extends ASubExportImport {
 
 	@Override
 	public String getBase() {
-		return "import";
+		return "load";
 	}
 
 	@Override
 	public String getDescription() {
-		return "/cam import <filename>";
+		return "/cam load <filename>";
 	}
 
 }

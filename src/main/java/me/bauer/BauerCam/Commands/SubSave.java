@@ -11,7 +11,7 @@ import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
 
-public class SubExport extends ASubExportImport {
+public class SubSave extends ASubExportImport {
 
 	@Override
 	protected void derivedExecute(final String filename) {
@@ -50,12 +50,12 @@ public class SubExport extends ASubExportImport {
 
 	@Override
 	public String getBase() {
-		return "export";
+		return "save";
 	}
 
 	@Override
 	public String getDescription() {
-		return "/cam export <filename>";
+		return "/cam save <filename>";
 	}
 
 }

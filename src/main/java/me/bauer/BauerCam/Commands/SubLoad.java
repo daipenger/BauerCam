@@ -18,7 +18,7 @@ public class SubLoad extends ASubExportImport {
 	protected void derivedExecute(final String filename) {
 		final File file = new File(Main.bauercamDirectory, filename + extension);
 
-		if (!file.exists() || !file.isFile()) {
+		if (!file.isFile()) {
 			Utils.sendInformation(Main.fileDoesNotExist.toString());
 			return;
 		}

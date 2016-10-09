@@ -74,6 +74,8 @@ public final class Main {
 	public final static LocalizedString pathTargetSet = new LocalizedString("bauercam.path.targetSet");
 	public final static LocalizedString pathTargetRemoved = new LocalizedString("bauercam.path.targetRemoved");
 	public final static LocalizedString pathCircleCreated = new LocalizedString("bauercam.path.circleCreated");
+	public final static LocalizedString pathPointInserted = new LocalizedString("bauercam.path.pointInserted");
+	public final static LocalizedString pathPointRemoved = new LocalizedString("bauercam.path.pointRemoved");
 
 	public final static LocalizedString commands = new LocalizedString("bauercam.cmd.commands");
 	public final static LocalizedString commandHasToBePlayer = new LocalizedString("bauercam.cmd.hasToBePlayer");

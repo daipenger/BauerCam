@@ -18,6 +18,8 @@ bauercam.path.add=Added point
 bauercam.path.targetSet=Camera path will be focused to your current position
 bauercam.path.targetRemoved=Removed camera focus
 bauercam.path.circleCreated=Circles have been created around your current position, consider setting a target
+bauercam.path.pointInserted=Inserted before point
+bauercam.path.pointRemoved=Removed point
 
 bauercam.cmd.commands=Commands:
 bauercam.cmd.hasToBePlayer=This command has to be executed by the player

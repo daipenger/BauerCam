@@ -18,6 +18,8 @@ bauercam.path.add=Punkt hinzugefügt:
 bauercam.path.targetSet=Kamerafahrt wird auf deine jetzige Position fokussiert werden
 bauercam.path.targetRemoved=Fokussierung ausgeschaltet
 bauercam.path.circleCreated=Kreisbahnen wurden um deine jetzige Position erstellt, setze jetzt am besten einen Fokus
+bauercam.path.pointInserted=Punkt wurde eingefügt vor Punkt:
+bauercam.path.pointRemoved=Punkt wurde entfernt:
 
 bauercam.cmd.commands=Kommandos:
 bauercam.cmd.hasToBePlayer=Kommandos nur für Spieler sinnvoll

@@ -8,7 +8,7 @@ import net.minecraft.command.CommandException;
 public class SubInserted implements ISubCommand {
 
 	@Override
-	public void execute(String[] args) throws CommandException {
+	public void execute(final String[] args) throws CommandException {
 		if (args.length == 1) {
 			throw new CommandException(getDescription(), new Object[0]);
 		}

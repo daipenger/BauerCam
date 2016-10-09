@@ -17,7 +17,7 @@ public final class EventListener {
 		}
 
 		if (Main.point.isPressed()) {
-			Position playerPos = Utils.getPosition();
+			final Position playerPos = Utils.getPosition();
 			PathHandler.addWaypoint(playerPos);
 			Utils.sendInformation(Main.pathAdd + " " + PathHandler.getWaypointSize());
 		}

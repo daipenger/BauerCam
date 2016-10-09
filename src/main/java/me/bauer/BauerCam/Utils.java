@@ -20,7 +20,7 @@ public final class Utils {
 	public static final int renderPhases = Phase.values().length;
 
 	public static Position getPosition() {
-		EntityPlayerSP player = mc.thePlayer;
+		final EntityPlayerSP player = mc.thePlayer;
 		return new Position(player.posX, player.posY, player.posZ, player.rotationPitch, player.rotationYaw,
 				CameraRoll.roll, DynamicFOV.get());
 	}

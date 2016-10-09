@@ -22,28 +22,28 @@ public class SubCircularPath implements ISubCommand {
 		}
 
 		try {
-			double radius = Double.parseDouble(args[1]);
-			int circles = Integer.parseInt(args[2]);
+			final double radius = Double.parseDouble(args[1]);
+			final int circles = Integer.parseInt(args[2]);
 
-			Position playerPos = Utils.getPosition();
+			final Position playerPos = Utils.getPosition();
 
-			Vector3D[] circleGrid = { new Vector3D(1, 0, 0), new Vector3D(sqrt2_2, 0, sqrt2_2), new Vector3D(0, 0, 1),
-					new Vector3D(-sqrt2_2, 0, sqrt2_2), new Vector3D(-1, 0, 0), new Vector3D(-sqrt2_2, 0, -sqrt2_2),
-					new Vector3D(0, 0, -1), new Vector3D(sqrt2_2, 0, -sqrt2_2) };
+			final Vector3D[] circleGrid = { new Vector3D(1, 0, 0), new Vector3D(sqrt2_2, 0, sqrt2_2),
+					new Vector3D(0, 0, 1), new Vector3D(-sqrt2_2, 0, sqrt2_2), new Vector3D(-1, 0, 0),
+					new Vector3D(-sqrt2_2, 0, -sqrt2_2), new Vector3D(0, 0, -1), new Vector3D(sqrt2_2, 0, -sqrt2_2) };
 
 			for (int i = 0; i < circleGrid.length; i++) {
 				circleGrid[i] = circleGrid[i].multiply(radius);
 			}
 
 			for (int i = 0; i < circles; i++) {
-				for (Vector3D point : circleGrid) {
+				for (final Vector3D point : circleGrid) {
 					PathHandler.addWaypoint(new Position(playerPos.x + point.x, playerPos.y, playerPos.z + point.z,
 							playerPos.pitch, playerPos.yaw, playerPos.roll, playerPos.fov));
 				}
 			}
 
 			Utils.sendInformation(Main.pathCircleCreated.toString());
-		} catch (NumberFormatException e) {
+		} catch (final NumberFormatException e) {
 			throw new CommandException(getDescription(), new Object[0]);
 		}
 	}

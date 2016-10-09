@@ -36,7 +36,7 @@ public class Vector3D {
 		return new Vector3D(this.x - other.x, this.y - other.y, this.z - other.z);
 	}
 
-	public Vector3D multiply(double scalar) {
+	public Vector3D multiply(final double scalar) {
 		return new Vector3D(this.x * scalar, this.y * scalar, this.z * scalar);
 	}
 

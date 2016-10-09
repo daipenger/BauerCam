@@ -15,7 +15,7 @@ public class SubReplace implements ISubCommand {
 		try {
 			final int index = Integer.parseInt(args[1]) - 1;
 
-			if (PathHandler.replace(Utils.getPosition(Utils.mc.thePlayer), index)) {
+			if (PathHandler.replace(Utils.getPosition(), index)) {
 				Utils.sendInformation(Main.pathReplace + " " + (index + 1));
 			} else {
 				Utils.sendInformation(Main.pathDoesNotExist.toString());

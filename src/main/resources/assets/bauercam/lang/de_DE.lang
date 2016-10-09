@@ -9,6 +9,7 @@ bauercam.key.reset=Drehung zurücksetzen
 bauercam.path.started=Kamerafahrt gestartet
 bauercam.path.stopped=Kamerafahrt gestoppt
 bauercam.path.isEmpty=Pfad ist leer
+bauercam.path.isPopulated=Lösche zuerst alle Punkte, um das Überschreiben zu bestätigen
 bauercam.path.undo=Letzter entfernt
 bauercam.path.doesNotExist=Punkt nicht definiert
 bauercam.path.reset=Alles zurückgesetzt
@@ -16,6 +17,7 @@ bauercam.path.replace=Punkt ersetzt:
 bauercam.path.add=Punkt hinzugefügt:
 bauercam.path.targetSet=Kamerafahrt wird auf deine jetzige Position fokussiert werden
 bauercam.path.targetRemoved=Fokussierung ausgeschaltet
+bauercam.path.circleCreated=Kreisbahnen wurden um deine jetzige Position erstellt, setze jetzt am besten einen Fokus
 
 bauercam.cmd.commands=Kommandos:
 bauercam.cmd.hasToBePlayer=Kommandos nur für Spieler sinnvoll

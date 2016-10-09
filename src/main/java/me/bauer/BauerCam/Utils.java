@@ -19,17 +19,10 @@ public final class Utils {
 	 */
 	public static final int renderPhases = Phase.values().length;
 
-	public static Position getPosition(final EntityPlayerSP player) {
+	public static Position getPosition() {
+		EntityPlayerSP player = mc.thePlayer;
 		return new Position(player.posX, player.posY, player.posZ, player.rotationPitch, player.rotationYaw,
 				CameraRoll.roll, DynamicFOV.get());
-	}
-
-	public static void addPosition() {
-		final EntityPlayerSP player = mc.thePlayer;
-		if (player == null) {
-			return;
-		}
-		PathHandler.addWaypoint(getPosition(player));
 	}
 
 	/**
@@ -41,9 +34,6 @@ public final class Utils {
 	 */
 	public static void teleport(final Position pos, final boolean force) {
 		final EntityPlayerSP player = mc.thePlayer;
-		if (player == null) {
-			return;
-		}
 		// force tackles desync
 		if (force) {
 			// teleport command syntax: /tp [target player] <x> <y> <z> [<y-rot>
@@ -76,11 +66,7 @@ public final class Utils {
 	}
 
 	public static void sendInformation(final String msg) {
-		final EntityPlayerSP player = mc.thePlayer;
-		if (player == null) {
-			return;
-		}
-		player.addChatMessage(new TextComponentString(msg));
+		mc.thePlayer.addChatMessage(new TextComponentString(msg));
 	}
 
 	public static int parseSafely(final String input, final int def) {

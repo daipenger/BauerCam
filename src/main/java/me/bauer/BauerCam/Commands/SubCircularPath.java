@@ -1,9 +1,15 @@
 package me.bauer.BauerCam.Commands;
 
+import me.bauer.BauerCam.Main;
+import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
+import me.bauer.BauerCam.Path.Position;
+import me.bauer.BauerCam.Path.Vector3D;
 import net.minecraft.command.CommandException;
 
 public class SubCircularPath implements ISubCommand {
+
+	private static final double sqrt2_2 = Math.sqrt(2) / 2;
 
 	@Override
 	public void execute(final String[] args) throws CommandException {
@@ -11,11 +17,35 @@ public class SubCircularPath implements ISubCommand {
 			throw new CommandException(getDescription(), new Object[0]);
 		}
 
-		if (PathHandler.getWaypointSize() == 0) {
-			// TODO message
-			throw new CommandException("", new Object[0]);
+		if (PathHandler.getWaypointSize() != 0) {
+			throw new CommandException(Main.pathIsPopulated.toString(), new Object[0]);
 		}
 
+		try {
+			double radius = Double.parseDouble(args[1]);
+			int circles = Integer.parseInt(args[2]);
+
+			Position playerPos = Utils.getPosition();
+
+			Vector3D[] circleGrid = { new Vector3D(1, 0, 0), new Vector3D(sqrt2_2, 0, sqrt2_2), new Vector3D(0, 0, 1),
+					new Vector3D(-sqrt2_2, 0, sqrt2_2), new Vector3D(-1, 0, 0), new Vector3D(-sqrt2_2, 0, -sqrt2_2),
+					new Vector3D(0, 0, -1), new Vector3D(sqrt2_2, 0, -sqrt2_2) };
+
+			for (int i = 0; i < circleGrid.length; i++) {
+				circleGrid[i] = circleGrid[i].multiply(radius);
+			}
+
+			for (int i = 0; i < circles; i++) {
+				for (Vector3D point : circleGrid) {
+					PathHandler.addWaypoint(new Position(playerPos.x + point.x, playerPos.y, playerPos.z + point.z,
+							playerPos.pitch, playerPos.yaw, playerPos.roll, playerPos.fov));
+				}
+			}
+
+			Utils.sendInformation(Main.pathCircleCreated.toString());
+		} catch (NumberFormatException e) {
+			throw new CommandException(getDescription(), new Object[0]);
+		}
 	}
 
 	@Override

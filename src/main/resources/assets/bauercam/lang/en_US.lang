@@ -9,6 +9,7 @@ bauercam.key.reset=Reset roll
 bauercam.path.started=Traveling started
 bauercam.path.stopped=Traveling stopped
 bauercam.path.isEmpty=Path is empty
+bauercam.path.isPopulated=Clear the path first to confirm the overwrite
 bauercam.path.undo=Last one removed
 bauercam.path.doesNotExist=Point not defined
 bauercam.path.reset=Removed all points
@@ -16,6 +17,7 @@ bauercam.path.replace=Replaced point
 bauercam.path.add=Added point
 bauercam.path.targetSet=Camera path will be focused to your current position
 bauercam.path.targetRemoved=Removed camera focus
+bauercam.path.circleCreated=Circles have been created around your current position, consider setting a target
 
 bauercam.cmd.commands=Commands:
 bauercam.cmd.hasToBePlayer=This command has to be executed by the player

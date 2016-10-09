@@ -1,6 +1,7 @@
 package me.bauer.BauerCam;
 
 import me.bauer.BauerCam.Path.PathHandler;
+import me.bauer.BauerCam.Path.Position;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -16,7 +17,8 @@ public final class EventListener {
 		}
 
 		if (Main.point.isPressed()) {
-			Utils.addPosition();
+			Position playerPos = Utils.getPosition();
+			PathHandler.addWaypoint(playerPos);
 			Utils.sendInformation(Main.pathAdd + " " + PathHandler.getWaypointSize());
 		}
 

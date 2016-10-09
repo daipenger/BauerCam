@@ -65,6 +65,7 @@ public final class Main {
 	public final static LocalizedString pathStarted = new LocalizedString("bauercam.path.started");
 	public final static LocalizedString pathStopped = new LocalizedString("bauercam.path.stopped");
 	public final static LocalizedString pathIsEmpty = new LocalizedString("bauercam.path.isEmpty");
+	public final static LocalizedString pathIsPopulated = new LocalizedString("bauercam.path.isPopulated");
 	public final static LocalizedString pathUndo = new LocalizedString("bauercam.path.undo");
 	public final static LocalizedString pathDoesNotExist = new LocalizedString("bauercam.path.doesNotExist");
 	public final static LocalizedString pathReset = new LocalizedString("bauercam.path.reset");
@@ -72,6 +73,7 @@ public final class Main {
 	public final static LocalizedString pathAdd = new LocalizedString("bauercam.path.add");
 	public final static LocalizedString pathTargetSet = new LocalizedString("bauercam.path.targetSet");
 	public final static LocalizedString pathTargetRemoved = new LocalizedString("bauercam.path.targetRemoved");
+	public final static LocalizedString pathCircleCreated = new LocalizedString("bauercam.path.circleCreated");
 
 	public final static LocalizedString commands = new LocalizedString("bauercam.cmd.commands");
 	public final static LocalizedString commandHasToBePlayer = new LocalizedString("bauercam.cmd.hasToBePlayer");

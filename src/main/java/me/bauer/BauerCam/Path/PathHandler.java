@@ -64,13 +64,17 @@ public final class PathHandler {
 
 	// Waypoints
 
+	public static void setWaypoints(final ArrayList<Position> points) {
+		PathHandler.points.clear();
+		PathHandler.points.addAll(points);
+	}
+
 	public static Position[] getWaypoints() {
 		return points.toArray(new Position[points.size()]);
 	}
 
-	public static void setWaypoints(final ArrayList<Position> points) {
-		PathHandler.points.clear();
-		PathHandler.points.addAll(points);
+	public static void clearWaypoints() {
+		points.clear();
 	}
 
 	public static void addWaypoint(final Position pos) {
@@ -92,6 +96,22 @@ public final class PathHandler {
 		return true;
 	}
 
+	public static boolean remove(final int index) {
+		if (isInBounds(index)) {
+			points.remove(index);
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean insert(final Position position, final int index) {
+		if (isInBounds(index)) {
+			points.add(index, position);
+			return true;
+		}
+		return false;
+	}
+
 	public static boolean replace(final Position position, final int index) {
 		if (isInBounds(index)) {
 			points.set(index, position);
@@ -100,11 +120,7 @@ public final class PathHandler {
 		return false;
 	}
 
-	public static void clearWaypoints() {
-		points.clear();
-	}
-
-	public static int getWaypointCount() {
+	public static int getWaypointSize() {
 		return points.size();
 	}
 

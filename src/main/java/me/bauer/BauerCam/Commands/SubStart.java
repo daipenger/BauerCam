@@ -17,7 +17,7 @@ public class SubStart implements ISubCommand {
 		if (frames <= 0) {
 			throw new CommandException(Main.commandInvalidFrames.toString(), new Object[0]);
 		}
-		if (PathHandler.getWaypointCount() <= 1) {
+		if (PathHandler.getWaypointSize() <= 1) {
 			throw new CommandException(Main.commandAtLeastTwoPoints.toString(), new Object[0]);
 		}
 

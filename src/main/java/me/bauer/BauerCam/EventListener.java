@@ -17,7 +17,7 @@ public final class EventListener {
 
 		if (Main.point.isPressed()) {
 			Utils.addPosition();
-			Utils.sendInformation(Main.pathAdd + " " + PathHandler.getWaypointCount());
+			Utils.sendInformation(Main.pathAdd + " " + PathHandler.getWaypointSize());
 		}
 
 		if (Main.cameraReset.isPressed()) {

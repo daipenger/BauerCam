@@ -11,7 +11,7 @@ public class SubCircularPath implements ISubCommand {
 			throw new CommandException(getDescription(), new Object[0]);
 		}
 
-		if (PathHandler.getWaypointCount() == 0) {
+		if (PathHandler.getWaypointSize() == 0) {
 			// TODO message
 			throw new CommandException("", new Object[0]);
 		}

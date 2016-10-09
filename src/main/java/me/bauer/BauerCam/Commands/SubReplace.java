@@ -14,7 +14,13 @@ public class SubReplace implements ISubCommand {
 		}
 		try {
 			final int index = Integer.parseInt(args[1]) - 1;
-			PathHandler.replace(Utils.getPosition(Utils.mc.thePlayer), index);
+
+			if (PathHandler.replace(Utils.getPosition(Utils.mc.thePlayer), index)) {
+				Utils.sendInformation(Main.pathReplace + " " + (index + 1));
+			} else {
+				Utils.sendInformation(Main.pathDoesNotExist.toString());
+			}
+
 		} catch (final NumberFormatException e) {
 			throw new CommandException(Main.pathDoesNotExist.toString(), new Object[0]);
 		}

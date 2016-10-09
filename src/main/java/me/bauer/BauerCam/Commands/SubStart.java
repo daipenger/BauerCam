@@ -12,6 +12,7 @@ public class SubStart implements ISubCommand {
 		if (args.length == 1) {
 			throw new CommandException(getDescription(), new Object[0]);
 		}
+
 		final long frames = Utils.parseSafely(args[1], 0);
 		if (frames <= 0) {
 			throw new CommandException(Main.commandInvalidFrames.toString(), new Object[0]);
@@ -19,7 +20,9 @@ public class SubStart implements ISubCommand {
 		if (PathHandler.getWaypointCount() <= 1) {
 			throw new CommandException(Main.commandAtLeastTwoPoints.toString(), new Object[0]);
 		}
+
 		PathHandler.startTravelling(frames);
+		Utils.sendInformation(Main.pathStarted.toString());
 	}
 
 	@Override

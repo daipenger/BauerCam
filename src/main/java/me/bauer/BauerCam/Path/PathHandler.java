@@ -2,7 +2,6 @@ package me.bauer.BauerCam.Path;
 
 import java.util.ArrayList;
 
-import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Interpolation.CubicInterpolator;
 import me.bauer.BauerCam.Interpolation.Interpolator;
@@ -37,12 +36,10 @@ public final class PathHandler {
 						CubicInterpolator.instance);
 
 		currentPath = new ActiveInterpolatorPath(interpolator, iterations);
-		Utils.sendInformation(Main.pathStarted.toString());
 	}
 
 	public static void stopTravelling() {
 		currentPath = null;
-		Utils.sendInformation(Main.pathStopped.toString());
 	}
 
 	public static boolean isTravelling() {
@@ -78,7 +75,6 @@ public final class PathHandler {
 
 	public static void addWaypoint(final Position pos) {
 		points.add(pos);
-		Utils.sendInformation(Main.pathAdd + " " + getWaypointCount());
 	}
 
 	public static Position getWaypoint(final int index) {
@@ -88,27 +84,24 @@ public final class PathHandler {
 		return null;
 	}
 
-	public static void removeLastWaypoint() {
+	public static boolean removeLastWaypoint() {
 		if (points.isEmpty()) {
-			Utils.sendInformation(Main.pathIsEmpty.toString());
-			return;
+			return false;
 		}
 		points.remove(points.size() - 1);
-		Utils.sendInformation(Main.pathUndo.toString());
+		return true;
 	}
 
-	public static void replace(final Position position, final int index) {
+	public static boolean replace(final Position position, final int index) {
 		if (isInBounds(index)) {
 			points.set(index, position);
-			Utils.sendInformation(Main.pathReplace + " " + (index + 1));
-			return;
+			return true;
 		}
-		Utils.sendInformation(Main.pathDoesNotExist.toString());
+		return false;
 	}
 
 	public static void clearWaypoints() {
 		points.clear();
-		Utils.sendInformation(Main.pathReset.toString());
 	}
 
 	public static int getWaypointCount() {

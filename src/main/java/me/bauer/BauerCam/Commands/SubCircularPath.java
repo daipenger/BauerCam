@@ -13,13 +13,13 @@ public class SubCircularPath implements ISubCommand {
 
 	private static final Vector3D rootPoint = new Vector3D(1, 0, 0);
 
-	private static final Vector3D[] rightMovingCircle = { rootPoint, new Vector3D(sqrt2_2, 0, sqrt2_2),
-			new Vector3D(0, 0, 1), new Vector3D(-sqrt2_2, 0, sqrt2_2), new Vector3D(-1, 0, 0),
-			new Vector3D(-sqrt2_2, 0, -sqrt2_2), new Vector3D(0, 0, -1), new Vector3D(sqrt2_2, 0, -sqrt2_2) };
-
-	private static final Vector3D[] leftMovingCircle = { rootPoint, new Vector3D(sqrt2_2, 0, -sqrt2_2),
+	private static final Vector3D[] rightMovingCircle = { rootPoint, new Vector3D(sqrt2_2, 0, -sqrt2_2),
 			new Vector3D(0, 0, -1), new Vector3D(-sqrt2_2, 0, -sqrt2_2), new Vector3D(-1, 0, 0),
 			new Vector3D(-sqrt2_2, 0, sqrt2_2), new Vector3D(0, 0, 1), new Vector3D(sqrt2_2, 0, sqrt2_2) };
+
+	private static final Vector3D[] leftMovingCircle = { rootPoint, new Vector3D(sqrt2_2, 0, sqrt2_2),
+			new Vector3D(0, 0, 1), new Vector3D(-sqrt2_2, 0, sqrt2_2), new Vector3D(-1, 0, 0),
+			new Vector3D(-sqrt2_2, 0, -sqrt2_2), new Vector3D(0, 0, -1), new Vector3D(sqrt2_2, 0, -sqrt2_2) };
 
 	@Override
 	public void execute(final String[] args) throws CommandException {

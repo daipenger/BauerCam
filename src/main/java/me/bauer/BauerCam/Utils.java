@@ -46,6 +46,9 @@ public final class Utils {
 				final String tpCommand = "/tp " + pos.x + " " + pos.y + " " + pos.z + " " + pos.yaw + " " + pos.pitch;
 				player.sendChatMessage(tpCommand);
 			}
+			// TODO: Add additional local server sync and maybe send a warning
+			// if doing this on a remote server (may be better doing this to
+			// Minema, too)
 			setPositionProperly(player, pos);
 			CameraRoll.roll = pos.roll;
 			DynamicFOV.set(pos.fov);

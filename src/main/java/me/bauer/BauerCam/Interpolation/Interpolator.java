@@ -6,9 +6,9 @@ import me.bauer.BauerCam.Path.Position;
 
 public final class Interpolator {
 
-	protected final PositionInterpolator a;
-	protected final PolarCoordinatesInterpolator b;
-	protected final AdditionalAngleInterpolator c;
+	protected final IPositionInterpolator a;
+	protected final IPolarCoordinatesInterpolator b;
+	protected final IAdditionalAngleInterpolator c;
 
 	protected final Position[] points;
 
@@ -18,8 +18,8 @@ public final class Interpolator {
 	 */
 	protected final int pathLength;
 
-	public Interpolator(final List<Position> points, final PositionInterpolator a, final PolarCoordinatesInterpolator b,
-			final AdditionalAngleInterpolator c) {
+	public Interpolator(final List<Position> points, final IPositionInterpolator a, final IPolarCoordinatesInterpolator b,
+			final IAdditionalAngleInterpolator c) {
 		this.points = new Position[points.size()];
 		for (int i = 0; i < this.points.length; i++) {
 			this.points[i] = points.get(i);

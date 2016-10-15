@@ -3,7 +3,7 @@ package me.bauer.BauerCam.Interpolation;
 import me.bauer.BauerCam.Path.Position;
 import me.bauer.BauerCam.Path.Vector3D;
 
-public class TargetInterpolator implements PolarCoordinatesInterpolator {
+public class TargetInterpolator implements IPolarCoordinatesInterpolator {
 
 	protected final Vector3D target;
 

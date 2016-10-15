@@ -2,11 +2,11 @@ package me.bauer.BauerCam.Interpolation;
 
 import me.bauer.BauerCam.Path.Position;
 
-public interface PolarCoordinatesInterpolator {
+public interface IPolarCoordinatesInterpolator {
 
 	/**
 	 * This module gets invoked AFTER
-	 * {@link PositionInterpolator#interpolate(PositionBuilder, Position, Position, Position, Position, double)}
+	 * {@link IPositionInterpolator#interpolate(PositionBuilder, Position, Position, Position, Position, double)}
 	 * which means that x, y and z in the {@link PositionBuilder} should be
 	 * already populated
 	 * <p>

@@ -5,7 +5,7 @@ import me.bauer.BauerCam.Path.Position;
 import me.bauer.BauerCam.Path.Vector3D;
 
 public final class CubicInterpolator
-		implements PositionInterpolator, PolarCoordinatesInterpolator, AdditionalAngleInterpolator {
+		implements IPositionInterpolator, IPolarCoordinatesInterpolator, IAdditionalAngleInterpolator {
 
 	public static final CubicInterpolator instance = new CubicInterpolator();
 

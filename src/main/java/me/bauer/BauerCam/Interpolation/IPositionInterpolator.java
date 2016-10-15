@@ -2,17 +2,12 @@ package me.bauer.BauerCam.Interpolation;
 
 import me.bauer.BauerCam.Path.Position;
 
-public interface AdditionalAngleInterpolator {
+public interface IPositionInterpolator {
 
 	/**
-	 * This module gets invoked AFTER
-	 * {@link PositionInterpolator#interpolate(PositionBuilder, Position, Position, Position, Position, double)}
-	 * and
-	 * {@link PolarCoordinatesInterpolator#interpolate(PositionBuilder, Position, Position, Position, Position, double)}
-	 * which means that x, y, z, pitch and yaw in the {@link PositionBuilder}
-	 * should be already populated
+	 * This module is the very first to be invoked!
 	 * <p>
-	 * This invoke HAS TO calculate fov and roll
+	 * This invoke HAS TO calculate x, y and z
 	 *
 	 * @param builder
 	 *            The builder where all intermediate results are to be saved to
@@ -30,7 +25,7 @@ public interface AdditionalAngleInterpolator {
 	 *            The fraction of which the player has already reached the next
 	 *            node (0-> he is still at y1, 1 -> he is already at y2)
 	 */
-	public void interpolateAdditionAngles(PositionBuilder builder, Position y0, Position y1, Position y2, Position y3,
+	public void interpolatePosition(PositionBuilder builder, Position y0, Position y1, Position y2, Position y3,
 			double step);
 
 }

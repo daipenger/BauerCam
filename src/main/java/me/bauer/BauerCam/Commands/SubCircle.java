@@ -7,7 +7,7 @@ import me.bauer.BauerCam.Path.Position;
 import me.bauer.BauerCam.Path.Vector3D;
 import net.minecraft.command.CommandException;
 
-public class SubCircularPath implements ISubCommand {
+public class SubCircle implements ISubCommand {
 
 	private static final double sqrt2_2 = Math.sqrt(2) / 2;
 

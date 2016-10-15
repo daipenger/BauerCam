@@ -18,8 +18,8 @@ public final class Interpolator {
 	 */
 	protected final int pathLength;
 
-	public Interpolator(final List<Position> points, final IPositionInterpolator a, final IPolarCoordinatesInterpolator b,
-			final IAdditionalAngleInterpolator c) {
+	public Interpolator(final List<Position> points, final IPositionInterpolator a,
+			final IPolarCoordinatesInterpolator b, final IAdditionalAngleInterpolator c) {
 		this.points = new Position[points.size()];
 		for (int i = 0; i < this.points.length; i++) {
 			this.points[i] = points.get(i);

@@ -19,6 +19,9 @@ public final class Utils {
 	 */
 	public static final int renderPhases = Phase.values().length;
 
+	/**
+	 * Do only call this method if a world is loaded!
+	 */
 	public static Position getPosition() {
 		final EntityPlayerSP player = mc.thePlayer;
 		return new Position(player.posX, player.posY, player.posZ, player.rotationPitch, player.rotationYaw,
@@ -33,17 +36,26 @@ public final class Utils {
 	 *            distance
 	 */
 	public static void teleport(final Position pos, final boolean force) {
-		final EntityPlayerSP player = mc.thePlayer;
-		// force tackles desync
-		if (force) {
-			// teleport command syntax: /tp [target player] <x> <y> <z> [<y-rot>
-			// <x-rot>]
-			final String tpCommand = "/tp " + pos.x + " " + pos.y + " " + pos.z + " " + pos.yaw + " " + pos.pitch;
-			player.sendChatMessage(tpCommand);
+		if (verify()) {
+			final EntityPlayerSP player = mc.thePlayer;
+			// force tackles desync
+			if (force) {
+				// teleport command syntax: /tp [target player] <x> <y> <z>
+				// [<y-rot>
+				// <x-rot>]
+				final String tpCommand = "/tp " + pos.x + " " + pos.y + " " + pos.z + " " + pos.yaw + " " + pos.pitch;
+				player.sendChatMessage(tpCommand);
+			}
+			setPositionProperly(player, pos);
+			CameraRoll.roll = pos.roll;
+			DynamicFOV.set(pos.fov);
 		}
-		setPositionProperly(player, pos);
-		CameraRoll.roll = pos.roll;
-		DynamicFOV.set(pos.fov);
+	}
+
+	public static void sendInformation(final String msg) {
+		if (verify()) {
+			mc.thePlayer.addChatMessage(new TextComponentString(msg));
+		}
 	}
 
 	private static void setPositionProperly(final Entity entity, final Position pos) {
@@ -65,8 +77,12 @@ public final class Utils {
 		entity.prevRotationPitch = pos.pitch;
 	}
 
-	public static void sendInformation(final String msg) {
-		mc.thePlayer.addChatMessage(new TextComponentString(msg));
+	private static boolean verify() {
+		if (mc.thePlayer == null) {
+			PathHandler.stopTravelling();
+			return false;
+		}
+		return true;
 	}
 
 	public static int parseSafely(final String input, final int def) {

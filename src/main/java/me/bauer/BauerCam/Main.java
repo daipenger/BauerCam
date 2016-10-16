@@ -21,7 +21,7 @@ public final class Main {
 	 */
 	public static final String modId = "bauercam";
 	public static final String name = "BauerCam";
-	public static final String version = "1.10";
+	public static final String version = "1.11";
 	public static final String minecraftTargetVersion = "1.10.2";
 
 	public final static KeyBinding point = new KeyBinding("bauercam.key.addPoint", Keyboard.KEY_P, name);

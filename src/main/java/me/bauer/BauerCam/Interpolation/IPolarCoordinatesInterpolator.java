@@ -1,8 +1,19 @@
 package me.bauer.BauerCam.Interpolation;
 
+import me.bauer.BauerCam.Path.PolarCoordinates;
 import me.bauer.BauerCam.Path.Position;
 
 public interface IPolarCoordinatesInterpolator {
+
+	public static final IPolarCoordinatesInterpolator dummy = new IPolarCoordinatesInterpolator() {
+		private final PolarCoordinates dummyCoordinates = new PolarCoordinates(0, 0);
+
+		@Override
+		public void interpolatePolarCoordinates(final PositionBuilder builder, final Position y0, final Position y1,
+				final Position y2, final Position y3, final double step) {
+			builder.setPolarCoordinates(dummyCoordinates);
+		}
+	};
 
 	/**
 	 * This module gets invoked AFTER

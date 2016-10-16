@@ -83,6 +83,9 @@ public final class Main {
 	public final static LocalizedString commandAtLeastTwoPoints = new LocalizedString("bauercam.cmd.atLeastTwoPoints");
 	public final static LocalizedString commandInvalidFrames = new LocalizedString("bauercam.cmd.invalidFrames");
 
+	public final static LocalizedString renderPreviewOn = new LocalizedString("bauercam.render.previewOn");
+	public final static LocalizedString renderPreviewOff = new LocalizedString("bauercam.render.previewOff");
+
 	public final static LocalizedString exportSuccessful = new LocalizedString("bauercam.exporter.successfulWrite");
 	public final static LocalizedString importSuccessful = new LocalizedString("bauercam.exporter.successfulRead");
 	public final static LocalizedString IOError = new LocalizedString("bauercam.exporter.IOError");

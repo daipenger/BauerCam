@@ -27,6 +27,9 @@ bauercam.cmd.travelledTo=Traveled to Point
 bauercam.cmd.atLeastTwoPoints=You have to set at least two points to start traveling
 bauercam.cmd.invalidFrames=Frames may not be zero or less
 
+bauercam.render.previewOn=Preview has been enabled
+bauercam.render.previewOff=Preview has been disabled
+
 bauercam.exporter.successfulWrite=Successfully exported to 
 bauercam.exporter.successfulRead=Successfully imported
 bauercam.exporter.IOError=IO error:

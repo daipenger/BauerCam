@@ -27,6 +27,9 @@ bauercam.cmd.travelledTo=Reise, reise:
 bauercam.cmd.atLeastTwoPoints=Mindestens 2 Punkte notwendig
 bauercam.cmd.invalidFrames=Zumindest ein Frame sollte es sein
 
+bauercam.render.previewOn=Vorschau wurde angeschaltet
+bauercam.render.previewOff=Vorschau wurde abgeschaltet
+
 bauercam.exporter.successfulWrite=Erfolgreich exportiert nach 
 bauercam.exporter.successfulRead=Erfolgreich importiert
 bauercam.exporter.IOError=IO Fehler:

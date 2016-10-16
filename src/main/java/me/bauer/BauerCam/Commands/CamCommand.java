@@ -11,7 +11,7 @@ public final class CamCommand extends CommandBase {
 
 	private static final ISubCommand[] commands = { new SubStart(), new SubStop(), new SubGoto(), new SubInsert(),
 			new SubRemove(), new SubReplace(), new SubUndo(), new SubClear(), new SubSave(), new SubLoad(),
-			new SubTarget(), new SubCircle() };
+			new SubTarget(), new SubCircle(), new SubPreview() };
 
 	@Override
 	public String getCommandName() {

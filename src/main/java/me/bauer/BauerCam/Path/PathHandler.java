@@ -12,6 +12,7 @@ public final class PathHandler {
 	private final static ArrayList<Position> points = new ArrayList<Position>();
 	private static Vector3D target;
 	private static ActivePath currentPath = null;
+	private static boolean preview = true;
 
 	// Additional path properties
 
@@ -23,6 +24,14 @@ public final class PathHandler {
 		PathHandler.target = null;
 	}
 
+	public static void switchPreview() {
+		preview = !preview;
+	}
+
+	public static boolean showPreview() {
+		return preview;
+	}
+
 	// End of path properties
 
 	// Travel control
@@ -30,9 +39,9 @@ public final class PathHandler {
 	public static void startTravelling(final long frames) {
 		final long iterations = frames * Utils.renderPhases;
 		final Interpolator interpolator = target == null
-				? new Interpolator(points, CubicInterpolator.instance, CubicInterpolator.instance,
+				? new Interpolator(getWaypoints(), CubicInterpolator.instance, CubicInterpolator.instance,
 						CubicInterpolator.instance)
-				: new Interpolator(points, CubicInterpolator.instance, new TargetInterpolator(target),
+				: new Interpolator(getWaypoints(), CubicInterpolator.instance, new TargetInterpolator(target),
 						CubicInterpolator.instance);
 
 		currentPath = new ActiveInterpolatorPath(interpolator, iterations);

@@ -1,7 +1,5 @@
 package me.bauer.BauerCam.Interpolation;
 
-import java.util.List;
-
 import me.bauer.BauerCam.Path.Position;
 
 public final class Interpolator {
@@ -18,13 +16,9 @@ public final class Interpolator {
 	 */
 	protected final int pathLength;
 
-	public Interpolator(final List<Position> points, final IPositionInterpolator a,
-			final IPolarCoordinatesInterpolator b, final IAdditionalAngleInterpolator c) {
-		this.points = new Position[points.size()];
-		for (int i = 0; i < this.points.length; i++) {
-			this.points[i] = points.get(i);
-		}
-
+	public Interpolator(final Position[] points, final IPositionInterpolator a, final IPolarCoordinatesInterpolator b,
+			final IAdditionalAngleInterpolator c) {
+		this.points = points;
 		this.pathLength = this.points.length - 1;
 
 		this.a = a;

@@ -4,6 +4,14 @@ import me.bauer.BauerCam.Path.Position;
 
 public interface IAdditionalAngleInterpolator {
 
+	public static final IAdditionalAngleInterpolator dummy = new IAdditionalAngleInterpolator() {
+		@Override
+		public void interpolateAdditionAngles(final PositionBuilder builder, final Position y0, final Position y1,
+				final Position y2, final Position y3, final double step) {
+			return;
+		}
+	};
+
 	/**
 	 * This module gets invoked AFTER
 	 * {@link IPositionInterpolator#interpolate(PositionBuilder, Position, Position, Position, Position, double)}

@@ -6,6 +6,7 @@ import me.bauer.BauerCam.Interpolation.CubicInterpolator;
 import me.bauer.BauerCam.Interpolation.IAdditionalAngleInterpolator;
 import me.bauer.BauerCam.Interpolation.IPolarCoordinatesInterpolator;
 import me.bauer.BauerCam.Interpolation.Interpolator;
+import me.bauer.BauerCam.Path.IPathChangeListener;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
 import net.minecraft.entity.Entity;
@@ -16,11 +17,62 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 
-public final class EventListener {
+public final class EventListener implements IPathChangeListener {
+
+	public static final EventListener instance = new EventListener();
+	/**
+	 * Describes how many lines per block intersection should be drawn
+	 */
+	private static final double previewFineness = 2;
+
+	private Position[] previewPoints;
+
+	/**
+	 * Use {@link EventListener#instance}
+	 */
+	private EventListener() {
+		this.previewPoints = null;
+		PathHandler.addPathChangeListener(this);
+	}
+
+	@Override
+	public void onPathChange() {
+		if (PathHandler.getWaypointSize() > 1) {
+			final Position[] path = PathHandler.getWaypoints();
+			final Interpolator interpolater = new Interpolator(path, CubicInterpolator.instance,
+					IPolarCoordinatesInterpolator.dummy, IAdditionalAngleInterpolator.dummy);
+
+			double distances = 0;
+
+			Position prev = path[0];
+
+			// The use of direct distances instead of the actual interpolated
+			// slope means that there will always be less drawn lines per block,
+			// however this is a good enough approximation
+
+			for (int i = 1; i < path.length; i++) {
+				final Position next = path[i];
+				distances += prev.distance(next);
+				prev = next;
+			}
+
+			int iterations = (int) (distances * previewFineness + 0.5);
+			// Snap to next mod 2
+			iterations += iterations & 1;
+
+			this.previewPoints = new Position[iterations];
+			for (int i = 0; i < iterations; i++) {
+				this.previewPoints[i] = interpolater.getPoint((double) i / (iterations - 1));
+			}
+
+		} else {
+			this.previewPoints = null;
+		}
+	}
 
 	@SubscribeEvent
 	public void onRender(final RenderWorldLastEvent e) {
-		if (PathHandler.isTravelling() || !PathHandler.showPreview() || PathHandler.getWaypointSize() < 2) {
+		if (this.previewPoints == null || !PathHandler.showPreview()) {
 			return;
 		}
 
@@ -29,12 +81,6 @@ public final class EventListener {
 		final double renderX = renderEntity.lastTickPosX + (renderEntity.posX - renderEntity.lastTickPosX) * partial;
 		final double renderY = renderEntity.lastTickPosY + (renderEntity.posY - renderEntity.lastTickPosY) * partial;
 		final double renderZ = renderEntity.lastTickPosZ + (renderEntity.posZ - renderEntity.lastTickPosZ) * partial;
-
-		final Position[] path = PathHandler.getWaypoints();
-		// TODO: Make dependent of distances between points
-		final int iterations = path.length * 20;
-		final Interpolator interpolater = new Interpolator(path, CubicInterpolator.instance,
-				IPolarCoordinatesInterpolator.dummy, IAdditionalAngleInterpolator.dummy);
 
 		GL11.glPushMatrix();
 		GL11.glPushAttrib(GL11.GL_ENABLE_BIT);
@@ -45,15 +91,12 @@ public final class EventListener {
 		GL11.glLineWidth(2.5f);
 		GL11.glColor3ub((byte) 255, (byte) 50, (byte) 50);
 
-		Position prev = interpolater.getPoint(0);
-
 		GL11.glBegin(GL11.GL_LINES);
-		for (int i = 0; i < iterations;) {
-			i++;
-			final Position next = interpolater.getPoint((double) i / iterations);
+		for (int i = 0; i < (this.previewPoints.length - 1); i++) {
+			final Position prev = this.previewPoints[i];
+			final Position next = this.previewPoints[i + 1];
 			GL11.glVertex3d(prev.x, prev.y, prev.z);
 			GL11.glVertex3d(next.x, next.y, next.z);
-			prev = next;
 		}
 		GL11.glEnd();
 

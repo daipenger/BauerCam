@@ -27,6 +27,10 @@ public class Vector3D {
 		return Math.sqrt(lengthSquared());
 	}
 
+	public double distance(final Vector3D target) {
+		return target.subtract(this).length();
+	}
+
 	public Vector3D normalize() {
 		final double length = length();
 		return new Vector3D(this.x / length, this.y / length, this.z / length);

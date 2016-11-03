@@ -10,6 +10,7 @@ import me.bauer.BauerCam.Interpolation.TargetInterpolator;
 public final class PathHandler {
 
 	private final static ArrayList<Position> points = new ArrayList<Position>();
+	private final static ArrayList<IPathChangeListener> listeners = new ArrayList<IPathChangeListener>();
 	private static Vector3D target;
 	private static ActivePath currentPath = null;
 	private static boolean preview = true;
@@ -29,7 +30,7 @@ public final class PathHandler {
 	}
 
 	public static boolean showPreview() {
-		return preview;
+		return preview && currentPath == null;
 	}
 
 	// End of path properties
@@ -65,6 +66,16 @@ public final class PathHandler {
 		}
 	}
 
+	public static void addPathChangeListener(final IPathChangeListener listener) {
+		listeners.add(listener);
+	}
+
+	private static void pushChange() {
+		for (final IPathChangeListener o : listeners) {
+			o.onPathChange();
+		}
+	}
+
 	private static boolean isInBounds(final int index) {
 		return index > -1 && index < points.size();
 	}
@@ -76,6 +87,7 @@ public final class PathHandler {
 	public static void setWaypoints(final ArrayList<Position> points) {
 		PathHandler.points.clear();
 		PathHandler.points.addAll(points);
+		pushChange();
 	}
 
 	public static Position[] getWaypoints() {
@@ -84,10 +96,12 @@ public final class PathHandler {
 
 	public static void clearWaypoints() {
 		points.clear();
+		pushChange();
 	}
 
 	public static void addWaypoint(final Position pos) {
 		points.add(pos);
+		pushChange();
 	}
 
 	public static Position getWaypoint(final int index) {
@@ -102,12 +116,14 @@ public final class PathHandler {
 			return false;
 		}
 		points.remove(points.size() - 1);
+		pushChange();
 		return true;
 	}
 
 	public static boolean remove(final int index) {
 		if (isInBounds(index)) {
 			points.remove(index);
+			pushChange();
 			return true;
 		}
 		return false;
@@ -116,6 +132,7 @@ public final class PathHandler {
 	public static boolean insert(final Position position, final int index) {
 		if (isInBounds(index)) {
 			points.add(index, position);
+			pushChange();
 			return true;
 		}
 		return false;
@@ -124,6 +141,7 @@ public final class PathHandler {
 	public static boolean replace(final Position position, final int index) {
 		if (isInBounds(index)) {
 			points.set(index, position);
+			pushChange();
 			return true;
 		}
 		return false;

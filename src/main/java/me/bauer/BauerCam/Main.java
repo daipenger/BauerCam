@@ -43,7 +43,7 @@ public final class Main {
 
 	@Mod.EventHandler
 	public void init(final FMLInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(new EventListener());
+		MinecraftForge.EVENT_BUS.register(EventListener.instance);
 		ClientCommandHandler.instance.registerCommand(new CamCommand());
 	}
 

@@ -1,0 +1,38 @@
+bauercam.key.addPoint=Bunkt dezu due
+bauercam.key.fovHigh=Greisere Blickwinggl
+bauercam.key.fovLow=Klonere Blickwinggl
+bauercam.key.fovReset=Blickwinggl zurücksetze
+bauercam.key.clockwise=Im Uhrzeichersinn drehn
+bauercam.key.counterClockwise=Geche de Uhrzeichersinn drehn
+bauercam.key.reset=Drehung zurücksetze
+
+bauercam.path.started=Kamerafohrt o
+bauercam.path.stopped=Kamerafohrt aus
+bauercam.path.isEmpty=Pfoad is leer
+bauercam.path.isPopulated=Tu zuerst alle Punkte lösche, dass des Überschreibe bestäticht werd
+bauercam.path.undo=Letzter Bunkt weggemocht
+bauercam.path.doesNotExist=Bunkt net definiert
+bauercam.path.reset=Alles zurückgesetzt
+bauercam.path.replace=Bunkt ersetzt:
+bauercam.path.add=Bunkt hinzugefücht:
+bauercam.path.targetSet=Kamerafohrt wird uf dei jetzge Bosition fokussierd werde
+bauercam.path.targetRemoved=Foggussierung ausgeschaldet
+bauercam.path.circleCreated=Kreisbohne wurde um dei jetzge Bosition erstellt, setz jetzt am beste an Foggus
+bauercam.path.pointInserted=Bunkt wurde eigefücht vor Bunkt:
+bauercam.path.pointRemoved=Bunkt wurd weg gemocht:
+
+bauercam.cmd.commands=Kommandos:
+bauercam.cmd.hasToBePlayer=Kommandos nur für Spieler sinnvoll
+bauercam.cmd.travelledTo=Zu dem Bunkt higonge:
+bauercam.cmd.atLeastTwoPoints=Mindeschtens zwoar Bunkte wern gebrauchd
+bauercam.cmd.invalidFrames=Zumindescht o Bild sollts scho sai
+
+bauercam.render.previewOn=Vorschau wurd ogeschald
+bauercam.render.previewOff=Vorschau wurd obgeschald
+
+bauercam.exporter.successfulWrite=Erfolgreich do hi exbordiert 
+bauercam.exporter.successfulRead=Erfolgreich imbordiert
+bauercam.exporter.IOError=IO Fehler:
+bauercam.exporter.posCannotBeParsed=Position ko net glese wern: 
+bauercam.exporter.fileDoesNotExist=Datei gits gor net
+bauercam.exporter.fileAlreadyExists=Datei gits scho. Lösch se per Hond oder nenn se onnerst

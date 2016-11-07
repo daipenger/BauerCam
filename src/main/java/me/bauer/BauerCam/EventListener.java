@@ -9,6 +9,7 @@ import me.bauer.BauerCam.Interpolation.Interpolator;
 import me.bauer.BauerCam.Path.IPathChangeListener;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
@@ -82,14 +83,14 @@ public final class EventListener implements IPathChangeListener {
 		final double renderY = renderEntity.lastTickPosY + (renderEntity.posY - renderEntity.lastTickPosY) * partial;
 		final double renderZ = renderEntity.lastTickPosZ + (renderEntity.posZ - renderEntity.lastTickPosZ) * partial;
 
-		GL11.glPushMatrix();
-		GL11.glPushAttrib(GL11.GL_ENABLE_BIT);
+		GlStateManager.pushMatrix();
+		GlStateManager.pushAttrib();
 
-		GL11.glTranslated(-renderX, -renderY, -renderZ);
-		GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		GL11.glLineWidth(2.5f);
-		GL11.glColor3ub((byte) 255, (byte) 50, (byte) 50);
+		GlStateManager.translate(-renderX, -renderY, -renderZ);
+		GlStateManager.disableLighting();
+		GlStateManager.disableTexture2D();
+		GlStateManager.glLineWidth(2.5f);
+		GlStateManager.color(1.0f, 0.2f, 0.2f);
 
 		GL11.glBegin(GL11.GL_LINES);
 		for (int i = 0; i < (this.previewPoints.length - 1); i++) {
@@ -100,8 +101,8 @@ public final class EventListener implements IPathChangeListener {
 		}
 		GL11.glEnd();
 
-		GL11.glPopAttrib();
-		GL11.glPopMatrix();
+		GlStateManager.popAttrib();
+		GlStateManager.popMatrix();
 	}
 
 	@SubscribeEvent

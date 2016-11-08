@@ -89,7 +89,7 @@ public final class EventListener implements IPathChangeListener {
 		GlStateManager.translate(-renderX, -renderY, -renderZ);
 		GlStateManager.disableLighting();
 		GlStateManager.disableTexture2D();
-		GlStateManager.glLineWidth(2.5f);
+		GlStateManager.glLineWidth(5f);
 		GlStateManager.color(1.0f, 0.2f, 0.2f);
 
 		GL11.glBegin(GL11.GL_LINES);

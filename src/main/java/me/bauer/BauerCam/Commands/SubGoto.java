@@ -22,7 +22,7 @@ public class SubGoto implements ISubCommand {
 			}
 			Utils.teleport(pos, true);
 
-			Utils.sendInformation(Main.commandTravelledTo + " " + (index + 1));
+			Utils.sendInformation(Main.commandTravelledTo.toString() + (index + 1));
 		} catch (final NumberFormatException e) {
 			throw new CommandException(Main.pathDoesNotExist.toString(), new Object[0]);
 		}

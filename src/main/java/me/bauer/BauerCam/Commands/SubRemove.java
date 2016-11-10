@@ -17,7 +17,7 @@ public class SubRemove implements ISubCommand {
 			final int index = Integer.parseInt(args[1]) - 1;
 
 			if (PathHandler.remove(index)) {
-				Utils.sendInformation(Main.pathPointRemoved + " " + (index + 1));
+				Utils.sendInformation(Main.pathPointRemoved.toString() + (index + 1));
 			} else {
 				Utils.sendInformation(Main.pathDoesNotExist.toString());
 			}

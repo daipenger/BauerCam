@@ -13,17 +13,17 @@ bauercam.path.isPopulated=Clear the path first to confirm the overwrite
 bauercam.path.undo=Last one removed
 bauercam.path.doesNotExist=Point not defined
 bauercam.path.reset=Removed all points
-bauercam.path.replace=Replaced point
-bauercam.path.add=Added point
+bauercam.path.replace=Replaced point 
+bauercam.path.add=Added point 
 bauercam.path.targetSet=Camera path will be focused to your current position
 bauercam.path.targetRemoved=Removed camera focus
 bauercam.path.circleCreated=Circles have been created around your current position, consider setting a target
-bauercam.path.pointInserted=Inserted before point
-bauercam.path.pointRemoved=Removed point
+bauercam.path.pointInserted=Inserted before point 
+bauercam.path.pointRemoved=Removed point 
 
 bauercam.cmd.commands=Commands:
 bauercam.cmd.hasToBePlayer=This command has to be executed by the player
-bauercam.cmd.travelledTo=Traveled to Point
+bauercam.cmd.travelledTo=Traveled to point 
 bauercam.cmd.atLeastTwoPoints=You have to set at least two points to start traveling
 bauercam.cmd.invalidFrames=Frames may not be zero or less
 

@@ -13,17 +13,17 @@ bauercam.path.isPopulated=Lösch zuallererscht alle Punkte, dass des Üwerschrei
 bauercam.path.undo=Letzter Bunkt weggmocht
 bauercam.path.doesNotExist=Den Bunkt gits net
 bauercam.path.reset=Alles uf noi
-bauercam.path.replace=Bunkt ersetzt:
-bauercam.path.add=Bunkt hinzugfücht:
+bauercam.path.replace=Bunkt ersetzt: 
+bauercam.path.add=Bunkt hinzugfücht: 
 bauercam.path.targetSet=Kamerafohrt wird uf dei jetzge Bosition fokussierd werde
 bauercam.path.targetRemoved=Foggussierung ausgeschaldet
 bauercam.path.circleCreated=Kreisbohne wurde um dei jetzge Bosition erstellt, setz jetzt am beste an Foggus
-bauercam.path.pointInserted=Bunkt wurde eigefücht vor Bunkt:
-bauercam.path.pointRemoved=Bunkt wurd weg gemocht:
+bauercam.path.pointInserted=Bunkt wurde eigefücht vor Bunkt: 
+bauercam.path.pointRemoved=Bunkt wurd weg gemocht: 
 
 bauercam.cmd.commands=Kommandos:
 bauercam.cmd.hasToBePlayer=Kommandos san nur für an Spieler gut
-bauercam.cmd.travelledTo=Zu dem Bunkt higonge:
+bauercam.cmd.travelledTo=Zu dem Bunkt higonge: 
 bauercam.cmd.atLeastTwoPoints=Mindeschtens zwoar Bunkte wern gebrauchd
 bauercam.cmd.invalidFrames=Zumindescht o Bild sollts scho sai
 

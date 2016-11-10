@@ -114,7 +114,7 @@ public final class EventListener implements IPathChangeListener {
 		if (Main.point.isPressed()) {
 			final Position playerPos = Utils.getPosition();
 			PathHandler.addWaypoint(playerPos);
-			Utils.sendInformation(Main.pathAdd + " " + PathHandler.getWaypointSize());
+			Utils.sendInformation(Main.pathAdd.toString() + PathHandler.getWaypointSize());
 		}
 
 		if (Main.cameraReset.isPressed()) {

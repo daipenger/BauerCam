@@ -13,17 +13,17 @@ bauercam.path.isPopulated=Lösche zuerst alle Punkte, um das Überschreiben zu b
 bauercam.path.undo=Letzter entfernt
 bauercam.path.doesNotExist=Punkt nicht definiert
 bauercam.path.reset=Alles zurückgesetzt
-bauercam.path.replace=Punkt ersetzt:
-bauercam.path.add=Punkt hinzugefügt:
+bauercam.path.replace=Punkt ersetzt: 
+bauercam.path.add=Punkt hinzugefügt: 
 bauercam.path.targetSet=Kamerafahrt wird auf deine jetzige Position fokussiert werden
 bauercam.path.targetRemoved=Fokussierung ausgeschaltet
 bauercam.path.circleCreated=Kreisbahnen wurden um deine jetzige Position erstellt, setze jetzt am besten einen Fokus
-bauercam.path.pointInserted=Punkt wurde eingefügt vor Punkt:
-bauercam.path.pointRemoved=Punkt wurde entfernt:
+bauercam.path.pointInserted=Punkt wurde eingefügt vor Punkt: 
+bauercam.path.pointRemoved=Punkt wurde entfernt: 
 
 bauercam.cmd.commands=Kommandos:
 bauercam.cmd.hasToBePlayer=Kommandos nur für Spieler sinnvoll
-bauercam.cmd.travelledTo=Reise, reise:
+bauercam.cmd.travelledTo=Reise, reise: 
 bauercam.cmd.atLeastTwoPoints=Mindestens 2 Punkte notwendig
 bauercam.cmd.invalidFrames=Zumindest ein Frame sollte es sein
 

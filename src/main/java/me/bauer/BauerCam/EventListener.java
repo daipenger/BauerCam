@@ -24,7 +24,7 @@ public final class EventListener implements IPathChangeListener {
 	/**
 	 * Describes how many lines per block intersection should be drawn
 	 */
-	private static final double previewFineness = 2;
+	private static final double previewFineness = 2.5;
 
 	private Position[] previewPoints;
 

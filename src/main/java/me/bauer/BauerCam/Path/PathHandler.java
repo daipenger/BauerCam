@@ -12,7 +12,7 @@ public final class PathHandler {
 	private final static ArrayList<Position> points = new ArrayList<Position>();
 	private final static ArrayList<IPathChangeListener> listeners = new ArrayList<IPathChangeListener>();
 	private static Vector3D target;
-	private static ActivePath currentPath = null;
+	private static ActivePath activePath = null;
 	private static boolean preview = true;
 
 	// Additional path properties
@@ -25,12 +25,16 @@ public final class PathHandler {
 		PathHandler.target = null;
 	}
 
+	public static boolean hasTarget() {
+		return target != null;
+	}
+
 	public static void switchPreview() {
 		preview = !preview;
 	}
 
 	public static boolean showPreview() {
-		return preview && currentPath == null;
+		return preview && activePath == null;
 	}
 
 	// End of path properties
@@ -45,15 +49,15 @@ public final class PathHandler {
 				: new Interpolator(getWaypoints(), CubicInterpolator.instance, new TargetInterpolator(target),
 						CubicInterpolator.instance);
 
-		currentPath = new ActiveInterpolatorPath(interpolator, iterations);
+		activePath = new ActiveInterpolatorPath(interpolator, iterations);
 	}
 
 	public static void stopTravelling() {
-		currentPath = null;
+		activePath = null;
 	}
 
 	public static boolean isTravelling() {
-		return currentPath != null;
+		return activePath != null;
 	}
 
 	// End of travel control
@@ -62,7 +66,7 @@ public final class PathHandler {
 
 	public static void tick() {
 		if (isTravelling()) {
-			currentPath.tick();
+			activePath.tick();
 		}
 	}
 

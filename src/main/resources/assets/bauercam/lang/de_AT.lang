@@ -13,6 +13,7 @@ bauercam.path.isPopulated=Lösch zuallererscht alle Punkte, dass des Üwerschrei
 bauercam.path.undo=Letzter Bunkt weggmocht
 bauercam.path.doesNotExist=Den Bunkt gits net
 bauercam.path.reset=Alles uf noi
+bauercam.path.resetBewareTarget=Bas uf: Doi Foggussierung is noch do!
 bauercam.path.replace=Bunkt ersetzt: 
 bauercam.path.add=Bunkt hinzugfücht: 
 bauercam.path.targetSet=Kamerafohrt wird uf dei jetzge Bosition fokussierd werde

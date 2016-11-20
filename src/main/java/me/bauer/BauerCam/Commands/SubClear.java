@@ -11,6 +11,9 @@ public class SubClear implements ISubCommand {
 	public void execute(final String[] args) throws CommandException {
 		PathHandler.clearWaypoints();
 		Utils.sendInformation(Main.pathReset.toString());
+		if (PathHandler.hasTarget()) {
+			Utils.sendInformation(Main.pathResetBewareTarget.toString());
+		}
 	}
 
 	@Override

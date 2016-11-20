@@ -69,6 +69,7 @@ public final class Main {
 	public final static LocalizedString pathUndo = new LocalizedString("bauercam.path.undo");
 	public final static LocalizedString pathDoesNotExist = new LocalizedString("bauercam.path.doesNotExist");
 	public final static LocalizedString pathReset = new LocalizedString("bauercam.path.reset");
+	public final static LocalizedString pathResetBewareTarget = new LocalizedString("bauercam.path.resetBewareTarget");
 	public final static LocalizedString pathReplace = new LocalizedString("bauercam.path.replace");
 	public final static LocalizedString pathAdd = new LocalizedString("bauercam.path.add");
 	public final static LocalizedString pathTargetSet = new LocalizedString("bauercam.path.targetSet");

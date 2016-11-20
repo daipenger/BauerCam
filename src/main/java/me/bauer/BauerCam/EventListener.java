@@ -86,7 +86,9 @@ public final class EventListener implements IPathChangeListener {
 		GlStateManager.pushMatrix();
 		GlStateManager.pushAttrib();
 
-		GlStateManager.translate(-renderX, -renderY, -renderZ);
+		// the render entity is basically only the player (which means that the
+		// eye height is not automatically considered in its y value)
+		GlStateManager.translate(-renderX, renderEntity.getEyeHeight() - renderY, -renderZ);
 		GlStateManager.disableLighting();
 		GlStateManager.disableTexture2D();
 		GlStateManager.glLineWidth(5f);

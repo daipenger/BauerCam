@@ -4,7 +4,7 @@
   "name": "BauerCam",
   "description": "A frame time based camera path tool",
   "version": "1.12",
-  "mcversion": "1.10.2",
+  "mcversion": "1.11",
   "authorList": ["Gregosteros"]
 }
 ]

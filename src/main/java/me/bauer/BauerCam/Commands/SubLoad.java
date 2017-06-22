@@ -23,7 +23,7 @@ public class SubLoad extends ASubExportImport {
 			return;
 		}
 
-		final ArrayList<Position> points = new ArrayList<Position>();
+		final ArrayList<Position> points = new ArrayList<>();
 		BufferedReader reader = null;
 
 		try {

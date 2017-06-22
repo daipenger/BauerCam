@@ -14,12 +14,12 @@ public final class CamCommand extends CommandBase {
 			new SubTarget(), new SubCircle(), new SubPreview() };
 
 	@Override
-	public String getCommandName() {
+	public String getName() {
 		return "cam";
 	}
 
 	@Override
-	public String getCommandUsage(final ICommandSender sender) {
+	public String getUsage(final ICommandSender sender) {
 		final StringBuilder s = new StringBuilder();
 		s.append(Main.commands);
 		for (final ISubCommand c : commands) {
@@ -37,11 +37,11 @@ public final class CamCommand extends CommandBase {
 	@Override
 	public void execute(final MinecraftServer server, final ICommandSender sender, final String[] args)
 			throws CommandException {
-		if (sender != Utils.mc.thePlayer) {
+		if (sender != Utils.mc.player) {
 			throw new CommandException(Main.commandHasToBePlayer.toString(), new Object[0]);
 		}
 		if (args.length == 0) {
-			throw new CommandException(getCommandUsage(sender), new Object[0]);
+			throw new CommandException(getUsage(sender), new Object[0]);
 		}
 
 		final String base = args[0].toLowerCase();
@@ -53,7 +53,7 @@ public final class CamCommand extends CommandBase {
 			}
 		}
 
-		throw new CommandException(getCommandUsage(sender), new Object[0]);
+		throw new CommandException(getUsage(sender), new Object[0]);
 	}
 
 }

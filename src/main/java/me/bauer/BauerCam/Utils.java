@@ -23,7 +23,7 @@ public final class Utils {
 	 * Do only call this method if a world is loaded!
 	 */
 	public static Position getPosition() {
-		final EntityPlayerSP player = mc.thePlayer;
+		final EntityPlayerSP player = mc.player;
 		return new Position(player.posX, player.posY, player.posZ, player.rotationPitch, player.rotationYaw,
 				CameraRoll.roll, DynamicFOV.get());
 	}
@@ -37,7 +37,7 @@ public final class Utils {
 	 */
 	public static void teleport(final Position pos, final boolean force) {
 		if (verify()) {
-			final EntityPlayerSP player = mc.thePlayer;
+			final EntityPlayerSP player = mc.player;
 			// force tackles desync
 			if (force) {
 				// teleport command syntax: /tp [target player] <x> <y> <z>
@@ -57,7 +57,7 @@ public final class Utils {
 
 	public static void sendInformation(final String msg) {
 		if (verify()) {
-			mc.thePlayer.addChatMessage(new TextComponentString(msg));
+			mc.player.sendMessage(new TextComponentString(msg));
 		}
 	}
 
@@ -81,7 +81,7 @@ public final class Utils {
 	}
 
 	private static boolean verify() {
-		if (mc.thePlayer == null) {
+		if (mc.player == null) {
 			PathHandler.stopTravelling();
 			return false;
 		}

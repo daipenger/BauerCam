@@ -9,8 +9,8 @@ import me.bauer.BauerCam.Interpolation.TargetInterpolator;
 
 public final class PathHandler {
 
-	private final static ArrayList<Position> points = new ArrayList<Position>();
-	private final static ArrayList<IPathChangeListener> listeners = new ArrayList<IPathChangeListener>();
+	private final static ArrayList<Position> points = new ArrayList<>();
+	private final static ArrayList<IPathChangeListener> listeners = new ArrayList<>();
 	private static Vector3D target;
 	private static ActivePath activePath = null;
 	private static boolean preview = true;

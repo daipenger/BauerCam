@@ -42,4 +42,17 @@ public final class InterpolationUtils {
 		return ((a * x + b) * x + c) * x + y1;
 	}
 
+	/**
+	 * Interpolates between y1 and y2. This is pure linear interpolation
+	 *
+	 * @param y1
+	 * @param y2
+	 * @param x
+	 *            from 0 to 1
+	 * @return
+	 */
+	public static double linear(final double y1, final double y2, final double x) {
+		return y1 + (y2 - y1) * x;
+	}
+
 }

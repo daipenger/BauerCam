@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Interpolation.CubicInterpolator;
+import me.bauer.BauerCam.Interpolation.IAdditionalAngleInterpolator;
+import me.bauer.BauerCam.Interpolation.IPolarCoordinatesInterpolator;
+import me.bauer.BauerCam.Interpolation.IPositionInterpolator;
 import me.bauer.BauerCam.Interpolation.Interpolator;
+import me.bauer.BauerCam.Interpolation.LinearInterpolator;
 import me.bauer.BauerCam.Interpolation.TargetInterpolator;
 
 public final class PathHandler {
@@ -42,14 +46,19 @@ public final class PathHandler {
 	// Travel control
 
 	public static void startTravelling(final long frames) {
+		final Position[] pathCopy = getWaypoints();
+		final boolean cmovLinear = pathCopy.length == 2;
 		final long iterations = frames * Utils.renderPhases;
-		final Interpolator interpolator = target == null
-				? new Interpolator(getWaypoints(), CubicInterpolator.instance, CubicInterpolator.instance,
-						CubicInterpolator.instance)
-				: new Interpolator(getWaypoints(), CubicInterpolator.instance, new TargetInterpolator(target),
-						CubicInterpolator.instance);
 
-		activePath = new ActiveInterpolatorPath(interpolator, iterations);
+		final IPositionInterpolator a = cmovLinear ? LinearInterpolator.instance : CubicInterpolator.instance;
+
+		final IPolarCoordinatesInterpolator b = target == null
+				? cmovLinear ? LinearInterpolator.instance : CubicInterpolator.instance
+				: new TargetInterpolator(target);
+
+		final IAdditionalAngleInterpolator c = cmovLinear ? LinearInterpolator.instance : CubicInterpolator.instance;
+
+		activePath = new ActiveInterpolatorPath(new Interpolator(pathCopy, a, b, c), iterations);
 	}
 
 	public static void stopTravelling() {

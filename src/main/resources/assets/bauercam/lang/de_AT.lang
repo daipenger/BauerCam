@@ -28,6 +28,8 @@ bauercam.cmd.travelledTo=Zu dem Bunkt higonge:
 bauercam.cmd.atLeastTwoPoints=Mindeschtens zwoar Bunkte wern gebrauchd
 bauercam.cmd.invalidFrames=Zumindescht o Bild sollts scho sai
 
+bauercam.warn.noLocalWorldTeleport=Teleport üwe so longe Strecke is blöd ohne Serverzugriff! Ge in e lokale Welt!
+
 bauercam.render.previewOn=Vorschau wurd ogeschald
 bauercam.render.previewOff=Vorschau wurd obgeschald
 

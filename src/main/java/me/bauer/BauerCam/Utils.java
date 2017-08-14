@@ -5,7 +5,9 @@ import me.bauer.BauerCam.Path.Position;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 
 public final class Utils {
@@ -37,27 +39,33 @@ public final class Utils {
 	 */
 	public static void teleport(final Position pos, final boolean force) {
 		if (verify()) {
-			final EntityPlayerSP player = mc.player;
-			// force tackles desync
+			final EntityPlayerSP playerSP = mc.player;
+
 			if (force) {
-				// teleport command syntax: /tp [target player] <x> <y> <z>
-				// [<y-rot>
-				// <x-rot>]
-				final String tpCommand = "/tp " + pos.x + " " + pos.y + " " + pos.z + " " + pos.yaw + " " + pos.pitch;
-				player.sendChatMessage(tpCommand);
+				if (mc.isIntegratedServerRunning()) {
+					EntityPlayerMP playerMP = mc.getIntegratedServer().getPlayerList()
+							.getPlayerByUUID(playerSP.getUniqueID());
+					setPositionProperly(playerMP, pos);
+				} else {
+					sendInformation(Main.warnNoLocalWorldTeleport.toString(), TextFormatting.RED);
+				}
 			}
-			// TODO: Add additional local server sync and maybe send a warning
-			// if doing this on a remote server (may be better doing this to
-			// Minema, too)
-			setPositionProperly(player, pos);
+
+			setPositionProperly(playerSP, pos);
 			CameraRoll.roll = pos.roll;
 			DynamicFOV.set(pos.fov);
 		}
 	}
 
 	public static void sendInformation(final String msg) {
+		sendInformation(msg, TextFormatting.WHITE);
+	}
+
+	public static void sendInformation(final String msg, final TextFormatting format) {
 		if (verify()) {
-			mc.player.sendMessage(new TextComponentString(msg));
+			TextComponentString text = new TextComponentString(msg);
+			text.getStyle().setColor(format);
+			mc.player.sendMessage(text);
 		}
 	}
 

@@ -28,6 +28,8 @@ bauercam.cmd.travelledTo=Traveled to point
 bauercam.cmd.atLeastTwoPoints=You have to set at least two points to start traveling
 bauercam.cmd.invalidFrames=Frames may not be zero or less
 
+bauercam.warn.noLocalWorldTeleport=Teleporting is done over a presumably large distance without access to the server! Use BauerCam on local worlds!
+
 bauercam.render.previewOn=Preview has been enabled
 bauercam.render.previewOff=Preview has been disabled
 

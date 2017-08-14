@@ -84,6 +84,9 @@ public final class Main {
 	public final static LocalizedString commandAtLeastTwoPoints = new LocalizedString("bauercam.cmd.atLeastTwoPoints");
 	public final static LocalizedString commandInvalidFrames = new LocalizedString("bauercam.cmd.invalidFrames");
 
+	public final static LocalizedString warnNoLocalWorldTeleport = new LocalizedString(
+			"bauercam.warn.noLocalWorldTeleport");
+
 	public final static LocalizedString renderPreviewOn = new LocalizedString("bauercam.render.previewOn");
 	public final static LocalizedString renderPreviewOff = new LocalizedString("bauercam.render.previewOff");
 

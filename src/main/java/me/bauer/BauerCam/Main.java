@@ -13,16 +13,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
-@Mod(modid = Main.modId, version = Main.version, clientSideOnly = true, acceptedMinecraftVersions = Main.minecraftTargetVersion)
+@Mod(modid = Main.modId, version = "1.13", clientSideOnly = true, acceptedMinecraftVersions = "[1.12,1.12.1]")
 public final class Main {
 
 	/**
-	 * Lower case will be required for 1.11 and beyond
+	 * Lower case is required for MC 1.11 and higher
 	 */
 	public static final String modId = "bauercam";
 	public static final String name = "BauerCam";
-	public static final String version = "1.12";
-	public static final String minecraftTargetVersion = "1.12";
 
 	public final static KeyBinding point = new KeyBinding("bauercam.key.addPoint", Keyboard.KEY_P, name);
 	public final static KeyBinding fovHigh = new KeyBinding("bauercam.key.fovHigh", Keyboard.KEY_O, name);

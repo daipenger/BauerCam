@@ -3,16 +3,16 @@ package me.bauer.BauerCam.Commands;
 import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
-import net.minecraft.command.CommandException;
+import net.minecraft.util.text.TextFormatting;
 
 public class SubUndo implements ISubCommand {
 
 	@Override
-	public void execute(final String[] args) throws CommandException {
+	public void execute(final String[] args) {
 		if (PathHandler.removeLastWaypoint()) {
 			Utils.sendInformation(Main.pathUndo.toString());
 		} else {
-			Utils.sendInformation(Main.pathIsEmpty.toString());
+			Utils.sendInformation(Main.pathIsEmpty.toString(), TextFormatting.YELLOW);
 		}
 	}
 

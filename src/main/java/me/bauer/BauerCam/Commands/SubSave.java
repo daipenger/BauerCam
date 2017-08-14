@@ -10,6 +10,7 @@ import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
+import net.minecraft.util.text.TextFormatting;
 
 public class SubSave extends ASubExportImport {
 
@@ -17,14 +18,14 @@ public class SubSave extends ASubExportImport {
 	protected void derivedExecute(final String filename) {
 		final Position[] points = PathHandler.getWaypoints();
 		if (points.length == 0) {
-			Utils.sendInformation(Main.pathIsEmpty.toString());
+			Utils.sendInformation(Main.pathIsEmpty.toString(), TextFormatting.YELLOW);
 			return;
 		}
 
 		final File file = new File(Main.bauercamDirectory, filename + extension);
 
 		if (file.isFile()) {
-			Utils.sendInformation(Main.fileAlreadyExists.toString());
+			Utils.sendInformation(Main.fileAlreadyExists.toString(), TextFormatting.YELLOW);
 			return;
 		}
 
@@ -40,8 +41,8 @@ public class SubSave extends ASubExportImport {
 
 			Utils.sendInformation(Main.exportSuccessful + file.getAbsolutePath());
 		} catch (final IOException e) {
-			Utils.sendInformation(Main.IOError.toString());
-			Utils.sendInformation(e.getMessage());
+			Utils.sendInformation(Main.IOError.toString(), TextFormatting.RED);
+			Utils.sendInformation(e.getMessage(), TextFormatting.YELLOW);
 		}
 
 		if (writer == null) {

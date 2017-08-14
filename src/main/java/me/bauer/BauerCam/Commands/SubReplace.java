@@ -3,26 +3,27 @@ package me.bauer.BauerCam.Commands;
 import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
-import net.minecraft.command.CommandException;
+import net.minecraft.util.text.TextFormatting;
 
 public class SubReplace implements ISubCommand {
 
 	@Override
-	public void execute(final String[] args) throws CommandException {
+	public void execute(final String[] args) {
 		if (args.length == 1) {
-			throw new CommandException(getDescription(), new Object[0]);
+			Utils.sendInformation(getDescription(), TextFormatting.RED);
+			return;
 		}
+
 		try {
 			final int index = Integer.parseInt(args[1]) - 1;
 
 			if (PathHandler.replace(Utils.getPosition(), index)) {
 				Utils.sendInformation(Main.pathReplace.toString() + (index + 1));
 			} else {
-				Utils.sendInformation(Main.pathDoesNotExist.toString());
+				Utils.sendInformation(Main.pathDoesNotExist.toString(), TextFormatting.YELLOW);
 			}
-
 		} catch (final NumberFormatException e) {
-			throw new CommandException(Main.pathDoesNotExist.toString(), new Object[0]);
+			Utils.sendInformation(Main.pathDoesNotExist.toString(), TextFormatting.YELLOW);
 		}
 	}
 

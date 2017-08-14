@@ -43,7 +43,7 @@ public final class Utils {
 
 			if (force) {
 				if (mc.isIntegratedServerRunning()) {
-					EntityPlayerMP playerMP = mc.getIntegratedServer().getPlayerList()
+					final EntityPlayerMP playerMP = mc.getIntegratedServer().getPlayerList()
 							.getPlayerByUUID(playerSP.getUniqueID());
 					setPositionProperly(playerMP, pos);
 				} else {
@@ -63,7 +63,7 @@ public final class Utils {
 
 	public static void sendInformation(final String msg, final TextFormatting format) {
 		if (verify()) {
-			TextComponentString text = new TextComponentString(msg);
+			final TextComponentString text = new TextComponentString(msg);
 			text.getStyle().setColor(format);
 			mc.player.sendMessage(text);
 		}

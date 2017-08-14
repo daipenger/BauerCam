@@ -5,14 +5,15 @@ import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Vector3D;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.command.CommandException;
+import net.minecraft.util.text.TextFormatting;
 
 public class SubTarget implements ISubCommand {
 
 	@Override
-	public void execute(final String[] args) throws CommandException {
+	public void execute(final String[] args) {
 		if (args.length == 1) {
-			throw new CommandException(getDescription(), new Object[0]);
+			Utils.sendInformation(getDescription(), TextFormatting.RED);
+			return;
 		}
 
 		final String op = args[1].toLowerCase();
@@ -26,7 +27,7 @@ public class SubTarget implements ISubCommand {
 			PathHandler.removeTarget();
 			Utils.sendInformation(Main.pathTargetRemoved.toString());
 		} else {
-			throw new CommandException(getDescription(), new Object[0]);
+			Utils.sendInformation(getDescription(), TextFormatting.RED);
 		}
 	}
 

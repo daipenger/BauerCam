@@ -5,7 +5,7 @@ import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
 import me.bauer.BauerCam.Path.Vector3D;
-import net.minecraft.command.CommandException;
+import net.minecraft.util.text.TextFormatting;
 
 public class SubCircle implements ISubCommand {
 
@@ -22,19 +22,22 @@ public class SubCircle implements ISubCommand {
 			new Vector3D(-sqrt2_2, 0, -sqrt2_2), new Vector3D(0, 0, -1), new Vector3D(sqrt2_2, 0, -sqrt2_2) };
 
 	@Override
-	public void execute(final String[] args) throws CommandException {
+	public void execute(final String[] args) {
 		if (args.length < 4) {
-			throw new CommandException(getDescription(), new Object[0]);
+			Utils.sendInformation(getDescription(), TextFormatting.RED);
+			return;
 		}
 		if (PathHandler.getWaypointSize() != 0) {
-			throw new CommandException(Main.pathIsPopulated.toString(), new Object[0]);
+			Utils.sendInformation(Main.pathIsPopulated.toString(), TextFormatting.YELLOW);
+			return;
 		}
 
 		final String direction = args[3].toLowerCase();
 		final Vector3D[] circle = "right".equals(direction) ? rightMovingCircle
 				: "left".equals(direction) ? leftMovingCircle : null;
 		if (circle == null) {
-			throw new CommandException(getDescription(), new Object[0]);
+			Utils.sendInformation(getDescription(), TextFormatting.RED);
+			return;
 		}
 
 		try {
@@ -56,7 +59,7 @@ public class SubCircle implements ISubCommand {
 
 			Utils.sendInformation(Main.pathCircleCreated.toString());
 		} catch (final NumberFormatException e) {
-			throw new CommandException(getDescription(), new Object[0]);
+			Utils.sendInformation(getDescription(), TextFormatting.RED);
 		}
 	}
 

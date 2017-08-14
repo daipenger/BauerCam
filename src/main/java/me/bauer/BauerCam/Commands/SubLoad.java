@@ -11,6 +11,7 @@ import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
 import me.bauer.BauerCam.Path.Position;
+import net.minecraft.util.text.TextFormatting;
 
 public class SubLoad extends ASubExportImport {
 
@@ -19,7 +20,7 @@ public class SubLoad extends ASubExportImport {
 		final File file = new File(Main.bauercamDirectory, filename + extension);
 
 		if (!file.isFile()) {
-			Utils.sendInformation(Main.fileDoesNotExist.toString());
+			Utils.sendInformation(Main.fileDoesNotExist.toString(), TextFormatting.YELLOW);
 			return;
 		}
 
@@ -42,8 +43,8 @@ public class SubLoad extends ASubExportImport {
 			PathHandler.setWaypoints(points);
 			Utils.sendInformation(Main.importSuccessful.toString());
 		} catch (final IOException e) {
-			Utils.sendInformation(Main.IOError.toString());
-			Utils.sendInformation(e.getMessage());
+			Utils.sendInformation(Main.IOError.toString(), TextFormatting.RED);
+			Utils.sendInformation(e.getMessage(), TextFormatting.YELLOW);
 		}
 
 		if (reader == null) {

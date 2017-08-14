@@ -3,12 +3,11 @@ package me.bauer.BauerCam.Commands;
 import me.bauer.BauerCam.Main;
 import me.bauer.BauerCam.Utils;
 import me.bauer.BauerCam.Path.PathHandler;
-import net.minecraft.command.CommandException;
 
 public class SubPreview implements ISubCommand {
 
 	@Override
-	public void execute(final String[] args) throws CommandException {
+	public void execute(final String[] args) {
 		PathHandler.switchPreview();
 		if (PathHandler.showPreview()) {
 			Utils.sendInformation(Main.renderPreviewOn.toString());

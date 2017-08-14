@@ -1,16 +1,19 @@
 package me.bauer.BauerCam.Commands;
 
-import net.minecraft.command.CommandException;
+import me.bauer.BauerCam.Utils;
+import net.minecraft.util.text.TextFormatting;
 
 public abstract class ASubExportImport implements ISubCommand {
 
 	protected static final String extension = ".txt";
 
 	@Override
-	public final void execute(final String[] args) throws CommandException {
+	public final void execute(final String[] args) {
 		if (args.length == 1) {
-			throw new CommandException(getDescription(), new Object[0]);
+			Utils.sendInformation(getDescription(), TextFormatting.RED);
+			return;
 		}
+
 		derivedExecute(args[1]);
 	}
 
